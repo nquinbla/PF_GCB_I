@@ -53,9 +53,13 @@ public class MainWindow extends JFrame {
             public void validate() {
                 try {
                     Usuario usuario = new Usuario(userField.getText());
-                    userIcon.setIcon(new ImageIcon("src/main/resources/icono-check.png"));
+                    ImageIcon icon = new ImageIcon("src/main/resources/icono-check.png");
+                    Image image = icon.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+                    userIcon.setIcon(new ImageIcon(image));
                 } catch (Exception ex) {
-                    userIcon.setIcon(new ImageIcon("src/main/resources/icono-cross.png"));
+                    ImageIcon icon = new ImageIcon("src/main/resources/icono-cross.png");
+                    Image image = icon.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+                    userIcon.setIcon(new ImageIcon(image));
                 }
             }
         });
@@ -74,9 +78,13 @@ public class MainWindow extends JFrame {
             public void validate() {
                 try {
                     Contraseña contraseña = new Contraseña(passwordField.getText());
-                    passwordIcon.setIcon(new ImageIcon("src/main/resources/icono-check.png"));
+                    ImageIcon icon = new ImageIcon("src/main/resources/icono-check.png");
+                    Image image = icon.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+                    passwordIcon.setIcon(new ImageIcon(image));
                 } catch (Exception ex) {
-                    passwordIcon.setIcon(new ImageIcon("src/main/resources/icono-cross.png"));
+                    ImageIcon icon = new ImageIcon("src/main/resources/icono-cross.png");
+                    Image image = icon.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+                    passwordIcon.setIcon(new ImageIcon(image));
                 }
             }
         });
@@ -89,7 +97,7 @@ public class MainWindow extends JFrame {
                 try {
                     Usuario usuario = new Usuario(userField.getText());
                     Contraseña contraseña = new Contraseña(passwordField.getText());
-                    // Aquí puedes hacer algo con los objetos usuario y contraseña
+
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }

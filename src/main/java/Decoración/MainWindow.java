@@ -41,6 +41,14 @@ public class MainWindow extends JFrame {
         passwordField = new JPasswordField(10);
         passwordIcon = new JLabel();
 
+        JButton button1 = new JButton(new ImageIcon("src/main/resources/icono1.png"));
+        JButton button2 = new JButton(new ImageIcon("src/main/resources/icono2.png"));
+
+        button1.setBorderPainted(false);
+        button1.setContentAreaFilled(false);
+        button2.setBorderPainted(false);
+        button2.setContentAreaFilled(false);
+
         userField.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 validate();
@@ -106,7 +114,7 @@ public class MainWindow extends JFrame {
         });
 
         gbc.gridx = 0;
-        gbc.gridy = 0;
+        gbc.gridy = 1;
         panel.add(userLabel, gbc);
 
         gbc.gridx = 1;
@@ -116,7 +124,7 @@ public class MainWindow extends JFrame {
         panel.add(userIcon, gbc);
 
         gbc.gridx = 0;
-        gbc.gridy = 1;
+        gbc.gridy = 2;
         panel.add(passwordLabel, gbc);
 
         gbc.gridx = 1;
@@ -126,9 +134,17 @@ public class MainWindow extends JFrame {
         panel.add(passwordIcon, gbc);
 
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         gbc.gridwidth = 3;
         panel.add(submitButton, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.NORTHEAST;
+        panel.add(button1, gbc);
+
+        gbc.gridy = 1;
+        panel.add(button2, gbc);
 
         add(panel);
     }

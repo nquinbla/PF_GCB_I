@@ -4,8 +4,8 @@ public class Contraseña {
     private String contraseña;
 
     public Contraseña(String contraseña) throws Exception {
-        if (contraseña.length() <= 6) {
-            throw new Exception("La contraseña debe ser más larga de 6 caracteres.");
+        if (contraseña.length() <= 6 || contraseña.length() > 12) {
+            throw new Exception("Contraseña incorrecta. Debe tener entre 7 y 12 caracteres.");
         }
         this.contraseña = contraseña;
     }

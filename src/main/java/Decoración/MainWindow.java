@@ -1,72 +1,75 @@
 package Decoración;
 
-import InicioSesión.Contraseña;
-import InicioSesión.Usuario;
-
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import InicioSesión.Usuario;
+import InicioSesión.Contraseña;
 
 public class MainWindow extends JFrame {
 
+    private JTextField userField;
+    private JTextField passwordField;
 
     public MainWindow() {
-
-
         setTitle("Gestor de Experimentos: Cultivos de Bacillus subtilis");
-
-
         setSize(1000, 600);
-
-
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-
         createComponents();
-
         setLocationRelativeTo(null);
-
-        // Hace visible la ventana
         setVisible(true);
     }
 
-
     private void createComponents() {
-        JButton userButton = new JButton("Usuario");
-        JButton passwordButton = new JButton("Contraseña");
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
 
-        userButton.addActionListener(new ActionListener() {
+        JLabel userLabel = new JLabel("Usuario:");
+        userLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        userField = new JTextField(10);
+
+        JLabel passwordLabel = new JLabel("Contraseña:");
+        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        passwordField = new JTextField(10);
+
+        JButton submitButton = new JButton("Iniciar sesión");
+        submitButton.setFont(new Font("Arial", Font.PLAIN, 14));
+        submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombre = JOptionPane.showInputDialog("Introduce tu nombre de usuario:");
                 try {
-                    Usuario usuario = new Usuario(nombre);
-                    // Aquí puedes hacer algo con el objeto usuario
+                    Usuario usuario = new Usuario(userField.getText());
+                    Contraseña contraseña = new Contraseña(passwordField.getText());
+                    // Aquí puedes hacer algo con los objetos usuario y contraseña
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
             }
         });
 
-        passwordButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String contraseña = JOptionPane.showInputDialog("Introduce tu contraseña:");
-                try {
-                    Contraseña password = new Contraseña(contraseña);
-                    // Aquí puedes hacer algo con el objeto password
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
-            }
-        });
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(userLabel, gbc);
 
+        gbc.gridx = 1;
+        panel.add(userField, gbc);
 
-        add(passwordButton);
-        add(userButton);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(passwordLabel, gbc);
+
+        gbc.gridx = 1;
+        panel.add(passwordField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 2;
+        panel.add(submitButton, gbc);
+
+        add(panel);
     }
 
-    //main para ejecutar mientras :)
     public static void main(String[] args) {
         new MainWindow();
     }

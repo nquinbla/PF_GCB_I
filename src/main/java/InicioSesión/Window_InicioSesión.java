@@ -32,6 +32,12 @@ public class Window_InicioSesión extends JFrame {
 
         gbc.insets = new Insets(10, 0, 10, 0);
 
+        // Título y subtítulo
+        JLabel titleLabel = new JLabel("Gestión de Cultivo de Bacillus subtillis", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        JLabel subtitleLabel = new JLabel("Experiments del laboratorio biologico de la uax", SwingConstants.CENTER);
+        subtitleLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+
         // Usuario
         JLabel userLabel = new JLabel("Usuario:");
         userLabel.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -57,7 +63,9 @@ public class Window_InicioSesión extends JFrame {
         JPanel buttonPanel = new JPanel(new BorderLayout());
         buttonPanel.add(usuario, BorderLayout.LINE_END);
 
-        mainPanel.add(buttonPanel, BorderLayout.PAGE_START);
+        mainPanel.add(titleLabel, BorderLayout.PAGE_START);
+        mainPanel.add(subtitleLabel, BorderLayout.LINE_START);
+        mainPanel.add(buttonPanel, BorderLayout.LINE_END);
         mainPanel.add(panel, BorderLayout.CENTER);
 
         add(mainPanel);

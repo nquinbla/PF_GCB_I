@@ -31,6 +31,8 @@ public class MainWindow extends JFrame {
         JButton passwordButton = new JButton("Contraseña");
 
 
+
+
         add(passwordButton);
         add(userButton);
     }

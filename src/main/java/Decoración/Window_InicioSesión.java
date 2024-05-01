@@ -9,14 +9,14 @@ import java.awt.event.ActionListener;
 import InicioSesión.Usuario;
 import InicioSesión.Contraseña;
 
-public class MainWindow extends JFrame {
+public class Window_InicioSesión extends JFrame {
 
     private JTextField userField;
     private JPasswordField passwordField;
     private JLabel userIcon;
     private JLabel passwordIcon;
 
-    public MainWindow() {
+    public Window_InicioSesión() {
         setTitle("Gestor de Experimentos: Cultivos de Bacillus subtilis");
         setSize(1000, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -53,16 +53,13 @@ public class MainWindow extends JFrame {
         button1.setBorderPainted(false);
         button1.setContentAreaFilled(false);
 
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        buttonPanel.add(button1);
+        JPanel buttonPanel = new JPanel(new BorderLayout());
+        buttonPanel.add(button1, BorderLayout.LINE_END);
 
         mainPanel.add(buttonPanel, BorderLayout.PAGE_START);
         mainPanel.add(panel, BorderLayout.CENTER);
 
         add(mainPanel);
-
-
-
 
         userField.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
@@ -153,7 +150,6 @@ public class MainWindow extends JFrame {
         gbc.gridwidth = 3;
         panel.add(submitButton, gbc);
 
-
         gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.NORTHEAST;
@@ -163,6 +159,6 @@ public class MainWindow extends JFrame {
     }
 
     public static void main(String[] args) {
-        new MainWindow();
+        new Window_InicioSesión();
     }
 }

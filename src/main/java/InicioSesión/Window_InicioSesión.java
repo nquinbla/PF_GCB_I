@@ -1,4 +1,4 @@
-package Decoración;
+package InicioSesión;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -6,8 +6,8 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import InicioSesión.Usuario;
-import InicioSesión.Contraseña;
+
+import Decoración.Window_Home;
 
 public class Window_InicioSesión extends JFrame {
 
@@ -46,6 +46,7 @@ public class Window_InicioSesión extends JFrame {
 
         // botón icono usuario
         JButton usuario = new JButton();
+        usuario.addActionListener(new UsuarioButtonAction());
         ImageIcon icon1 = new ImageIcon("src/main/resources/icono-usuario.png");
         Image img1 = icon1.getImage();
         Image resizedImg1 = img1.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);

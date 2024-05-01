@@ -12,7 +12,7 @@ import InicioSesión.Contraseña;
 public class MainWindow extends JFrame {
 
     private JTextField userField;
-    private JTextField passwordField;
+    private JPasswordField passwordField;
     private JLabel userIcon;
     private JLabel passwordIcon;
 
@@ -36,7 +36,7 @@ public class MainWindow extends JFrame {
 
         JLabel passwordLabel = new JLabel("Contraseña:");
         passwordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-        passwordField = new JTextField(10);
+        passwordField = new JPasswordField(10);
         passwordIcon = new JLabel();
 
         userField.getDocument().addDocumentListener(new DocumentListener() {
@@ -77,7 +77,7 @@ public class MainWindow extends JFrame {
 
             public void validate() {
                 try {
-                    Contraseña contraseña = new Contraseña(passwordField.getText());
+                    Contraseña contraseña = new Contraseña(new String(passwordField.getPassword()));
                     ImageIcon icon = new ImageIcon("src/main/resources/icono-check.png");
                     Image image = icon.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
                     passwordIcon.setIcon(new ImageIcon(image));
@@ -96,8 +96,7 @@ public class MainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Usuario usuario = new Usuario(userField.getText());
-                    Contraseña contraseña = new Contraseña(passwordField.getText());
-
+                    Contraseña contraseña = new Contraseña(new String(passwordField.getPassword()));
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }

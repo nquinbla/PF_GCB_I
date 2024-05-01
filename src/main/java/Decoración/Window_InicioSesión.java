@@ -45,16 +45,16 @@ public class Window_InicioSesión extends JFrame {
         passwordIcon = new JLabel();
 
         // botón icono usuario
-        JButton button1 = new JButton();
+        JButton usuario = new JButton();
         ImageIcon icon1 = new ImageIcon("src/main/resources/icono-usuario.png");
         Image img1 = icon1.getImage();
         Image resizedImg1 = img1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
-        button1.setIcon(new ImageIcon(resizedImg1));
-        button1.setBorderPainted(false);
-        button1.setContentAreaFilled(false);
+        usuario.setIcon(new ImageIcon(resizedImg1));
+        usuario.setBorderPainted(false);
+        usuario.setContentAreaFilled(false);
 
         JPanel buttonPanel = new JPanel(new BorderLayout());
-        buttonPanel.add(button1, BorderLayout.LINE_END);
+        buttonPanel.add(usuario, BorderLayout.LINE_END);
 
         mainPanel.add(buttonPanel, BorderLayout.PAGE_START);
         mainPanel.add(panel, BorderLayout.CENTER);
@@ -155,7 +155,7 @@ public class Window_InicioSesión extends JFrame {
         gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.NORTHEAST;
-        panel.add(button1, gbc);
+        panel.add(usuario, gbc);
 
         add(panel);
     }

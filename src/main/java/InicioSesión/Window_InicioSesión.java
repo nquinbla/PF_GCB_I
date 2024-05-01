@@ -31,8 +31,8 @@ public class Window_InicioSesión extends JFrame {
 
         // Título y subtítulo
         JLabel titleLabel = new JLabel("Gestión de Cultivo de Bacillus subtillis", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        JLabel subtitleLabel = new JLabel("Experiments del laboratorio biologico de la uax", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
+        JLabel subtitleLabel = new JLabel("Experimentos del laboratorio biologico de laUAX", SwingConstants.CENTER);
         subtitleLabel.setFont(new Font("Arial", Font.PLAIN, 18));
 
         // Usuario
@@ -59,37 +59,42 @@ public class Window_InicioSesión extends JFrame {
 
         // Añadir componentes al panel principal
 
-        // título
+        // Título
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 0;
         gbc.gridwidth = 3;
         gbc.anchor = GridBagConstraints.PAGE_START;
+        gbc.insets = new Insets(10, 0, 15, 0);
         mainPanel.add(titleLabel, gbc);
-        // subtítulo
+
+        // Subtítulo
         gbc.gridy = 1;
+        gbc.insets = new Insets(0, 0, 50, 0);
         mainPanel.add(subtitleLabel, gbc);
 
-        // usuario
-        gbc.gridx = 0;
+        // Etiqueta "Usuario:"
         gbc.gridy = 2;
         gbc.gridwidth = 1;
         gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(10, 0, 0, 0);
         mainPanel.add(userLabel, gbc);
-        // campo de texto
+
+        // Campo de texto del usuario
         gbc.gridx = 1;
         mainPanel.add(userField, gbc);
 
-        // icono usuario
+        // Botón de usuario
         gbc.gridx = 2;
         gbc.anchor = GridBagConstraints.PAGE_START;
         mainPanel.add(usuario, gbc);
 
-        // contraseña
+        // Etiqueta "Contraseña:"
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.anchor = GridBagConstraints.CENTER;
         mainPanel.add(passwordLabel, gbc);
-        // campo de texto
+
+        // Campo de texto de la contraseña
         gbc.gridx = 1;
         mainPanel.add(passwordField, gbc);
 
@@ -97,6 +102,7 @@ public class Window_InicioSesión extends JFrame {
 
 
 
+        // iconos para que cuando se escriba en los campos de texto se valide si el usuario y la contraseña son correctos
         userField.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 validate();

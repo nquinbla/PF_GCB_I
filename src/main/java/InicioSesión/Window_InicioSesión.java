@@ -83,9 +83,10 @@ public class Window_InicioSesión extends JFrame {
         gbc.gridx = 1;
         mainPanel.add(userField, gbc);
 
-        // Botón de usuario
-        gbc.gridx = 2;
-        gbc.anchor = GridBagConstraints.PAGE_START;
+        // Panel del botón de usuario
+        gbc.gridx = 2; // Cambiado a 2
+        gbc.gridy = 0; // Cambiado a 0
+        gbc.anchor = GridBagConstraints.NORTHEAST; // Cambiado a NORTHEAST
         mainPanel.add(usuario, gbc);
 
         // Etiqueta "Contraseña:"

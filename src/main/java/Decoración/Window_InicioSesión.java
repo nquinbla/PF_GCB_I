@@ -48,7 +48,7 @@ public class Window_InicioSesión extends JFrame {
         JButton usuario = new JButton();
         ImageIcon icon1 = new ImageIcon("src/main/resources/icono-usuario.png");
         Image img1 = icon1.getImage();
-        Image resizedImg1 = img1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
+        Image resizedImg1 = img1.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
         usuario.setIcon(new ImageIcon(resizedImg1));
         usuario.setBorderPainted(false);
         usuario.setContentAreaFilled(false);
@@ -155,9 +155,8 @@ public class Window_InicioSesión extends JFrame {
         gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.NORTHEAST;
-        panel.add(usuario, gbc);
 
-        add(panel);
+
     }
 
     public static void main(String[] args) {

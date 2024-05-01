@@ -26,11 +26,8 @@ public class Window_InicioSesión extends JFrame {
     }
 
     private void createComponents() {
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        JPanel panel = new JPanel(new GridBagLayout());
+        JPanel mainPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-
-        gbc.insets = new Insets(10, 0, 10, 0);
 
         // Título y subtítulo
         JLabel titleLabel = new JLabel("Gestión de Cultivo de Bacillus subtillis", SwingConstants.CENTER);
@@ -60,15 +57,45 @@ public class Window_InicioSesión extends JFrame {
         usuario.setBorderPainted(false);
         usuario.setContentAreaFilled(false);
 
-        JPanel buttonPanel = new JPanel(new BorderLayout());
-        buttonPanel.add(usuario, BorderLayout.LINE_END);
+        // Añadir componentes al panel principal
 
-        mainPanel.add(titleLabel, BorderLayout.PAGE_START);
-        mainPanel.add(subtitleLabel, BorderLayout.LINE_START);
-        mainPanel.add(buttonPanel, BorderLayout.LINE_END);
-        mainPanel.add(panel, BorderLayout.CENTER);
+        // título
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 3;
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        mainPanel.add(titleLabel, gbc);
+        // subtítulo
+        gbc.gridy = 1;
+        mainPanel.add(subtitleLabel, gbc);
+
+        // usuario
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+        mainPanel.add(userLabel, gbc);
+        // campo de texto
+        gbc.gridx = 1;
+        mainPanel.add(userField, gbc);
+
+        // icono usuario
+        gbc.gridx = 2;
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        mainPanel.add(usuario, gbc);
+
+        // contraseña
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.anchor = GridBagConstraints.CENTER;
+        mainPanel.add(passwordLabel, gbc);
+        // campo de texto
+        gbc.gridx = 1;
+        mainPanel.add(passwordField, gbc);
 
         add(mainPanel);
+
+
 
         userField.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
@@ -138,28 +165,28 @@ public class Window_InicioSesión extends JFrame {
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        panel.add(userLabel, gbc);
+        mainPanel.add(userLabel, gbc);
 
         gbc.gridx = 1;
-        panel.add(userField, gbc);
+        mainPanel.add(userField, gbc);
 
         gbc.gridx = 2;
-        panel.add(userIcon, gbc);
+        mainPanel.add(userIcon, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
-        panel.add(passwordLabel, gbc);
+        mainPanel.add(passwordLabel, gbc);
 
         gbc.gridx = 1;
-        panel.add(passwordField, gbc);
+        mainPanel.add(passwordField, gbc);
 
         gbc.gridx = 2;
-        panel.add(passwordIcon, gbc);
+        mainPanel.add(passwordIcon, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 3;
-        panel.add(submitButton, gbc);
+        mainPanel.add(submitButton, gbc);
 
         gbc.gridx = 2;
         gbc.gridy = 0;

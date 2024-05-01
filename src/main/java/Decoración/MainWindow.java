@@ -8,7 +8,7 @@ public class MainWindow extends JFrame {
     public MainWindow() {
 
 
-        setTitle("Gestor de Experimentos");
+        setTitle("Gestor de Experimentos: Cultivos de Bacillus subtilis");
 
 
         setSize(1000, 600);
@@ -25,9 +25,16 @@ public class MainWindow extends JFrame {
         setVisible(true);
     }
 
-    private void createComponents() {
 
+    private void createComponents() {
+        JButton userButton = new JButton("Usuario");
+        JButton passwordButton = new JButton("Contraseña");
+
+
+        add(passwordButton);
+        add(userButton);
     }
+
     //main para ejecutar mientras :)
     public static void main(String[] args) {
         new MainWindow();

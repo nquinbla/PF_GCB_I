@@ -29,6 +29,8 @@ public class MainWindow extends JFrame {
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
+        gbc.insets = new Insets(10, 0, 10, 0);
+
         JLabel userLabel = new JLabel("Usuario:");
         userLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         userField = new JTextField(10);

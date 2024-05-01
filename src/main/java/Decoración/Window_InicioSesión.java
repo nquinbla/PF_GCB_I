@@ -119,6 +119,8 @@ public class Window_InicioSesión extends JFrame {
                 try {
                     Usuario usuario = new Usuario(userField.getText());
                     Contraseña contraseña = new Contraseña(new String(passwordField.getPassword()));
+                    Window_InicioSesión.this.dispose();
+                    new Window_Home().setVisible(true);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }

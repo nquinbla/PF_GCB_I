@@ -41,7 +41,7 @@ public class MainWindow extends JFrame {
         passwordField = new JPasswordField(10);
         passwordIcon = new JLabel();
 
-        JButton button1 = new JButton(new ImageIcon("src/main/resources/icono1.png"));
+        JButton button1 = new JButton(new ImageIcon("src/main/resources/icono-usuario.png"));
         JButton button2 = new JButton(new ImageIcon("src/main/resources/icono2.png"));
 
         button1.setBorderPainted(false);
@@ -137,6 +137,7 @@ public class MainWindow extends JFrame {
         gbc.gridy = 3;
         gbc.gridwidth = 3;
         panel.add(submitButton, gbc);
+
 
         gbc.gridx = 2;
         gbc.gridy = 0;

@@ -14,10 +14,12 @@ public class MainWindow extends JFrame {
         setSize(1000, 600);
 
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
         createComponents();
+
+        setLocationRelativeTo(null);
 
         // Hace visible la ventana
         setVisible(true);

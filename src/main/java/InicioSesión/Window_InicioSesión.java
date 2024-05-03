@@ -6,6 +6,7 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 import Home.Window_Home;
 
@@ -26,15 +27,24 @@ public class Window_InicioSesión extends JFrame {
     }
 
     private void createComponents() {
+
         // Crear un JLayeredPane para permitir la superposición de componentes
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new Dimension(800, 400));
 
         // Crear un JLabel para la imagen de fondo
-        ImageIcon backgroundImageIcon = new ImageIcon("src/main/resources/fondo-iniciosesion.jpg");
+        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("/fondo-iniciosesion.jpg"));
         Image backgroundImage = backgroundImageIcon.getImage();
+
+        // Escalar la imagen con alta calidad
         Image newBackgroundImage = backgroundImage.getScaledInstance(800, 400, java.awt.Image.SCALE_SMOOTH);
-        backgroundImageIcon = new ImageIcon(newBackgroundImage);
+        BufferedImage resizedImg = new BufferedImage(800, 400, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(newBackgroundImage, 0, 0, 800, 400, null);
+        g2.dispose();
+
+        backgroundImageIcon = new ImageIcon(resizedImg);
         JLabel backgroundLabel = new JLabel(backgroundImageIcon);
         backgroundLabel.setSize(800, 400);
 

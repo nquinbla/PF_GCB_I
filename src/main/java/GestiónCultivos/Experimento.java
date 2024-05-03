@@ -8,7 +8,7 @@ public class Experimento {
     private String nombre;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
-    private List<poblaciónBacteria> población;
+    private List<PoblaciónBacteria> población;
 
     public Experimento(String nombre, LocalDate fechaInicio, LocalDate fechaFin) {
         this.nombre = nombre;
@@ -17,11 +17,11 @@ public class Experimento {
         this.población = new ArrayList<>();
     }
 
-    public void añadirPoblación(poblaciónBacteria población) {
+    public void añadirPoblación(PoblaciónBacteria población) {
         this.población.add(población);
     }
 
-    public void eliminarPoblación(poblaciónBacteria población) {
+    public void eliminarPoblación(PoblaciónBacteria población) {
         this.población.remove(población);
     }
 

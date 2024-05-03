@@ -1,4 +1,4 @@
-package Decoración;
+package Home;
 
 import javax.swing.JFrame;
 

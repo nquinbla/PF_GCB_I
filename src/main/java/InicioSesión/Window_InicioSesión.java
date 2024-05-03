@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Decoración.Window_Home;
+import Home.Window_Home;
 
 public class Window_InicioSesión extends JFrame {
 

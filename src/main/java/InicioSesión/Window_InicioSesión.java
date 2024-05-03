@@ -32,8 +32,8 @@ public class Window_InicioSesión extends JFrame {
         // Título y subtítulo
         JLabel titleLabel = new JLabel("Gestión de Cultivo de Bacillus subtillis", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
-        JLabel subtitleLabel = new JLabel("Experimentos del laboratorio biologico de laUAX", SwingConstants.CENTER);
-        subtitleLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        JLabel subtitleLabel = new JLabel("<html><body><b><i>Experimentos del laboratorio biologico de la <font color='blue'>UAX</font></i></b></body></html>", SwingConstants.CENTER);
+        subtitleLabel.setFont(new Font("Arial", Font.BOLD, 18));
 
         // Usuario
         JLabel userLabel = new JLabel("Usuario:");

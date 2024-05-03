@@ -17,8 +17,8 @@ public class Window_InicioSesión extends JFrame {
     private JLabel passwordIcon;
 
     public Window_InicioSesión() {
-        setTitle("Gestor de Experimentos: Cultivos de Bacillus subtilis");
-        setSize(1000, 600);
+        setTitle("Gestor de Experimentos: Inicio Sesión");
+        setSize(800, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         createComponents();
         setLocationRelativeTo(null);

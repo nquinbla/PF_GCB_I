@@ -6,6 +6,12 @@ import javax.swing.border.EmptyBorder;
 
 
 public class Window_Home extends JFrame {
+    private String usuario;
+    private String contraseña;
+
+    public void setCredentials(String usuario, String contraseña) {
+        this.usuario = usuario;
+        this.contraseña = contraseña;}
 
     public Window_Home() {
         setTitle("Gestor de Experimentos: Home");

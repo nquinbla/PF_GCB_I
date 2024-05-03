@@ -139,10 +139,12 @@ public class Window_InicioSesión extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Usuario usuario = new Usuario(userField.getText());
-                    Contraseña contraseña = new Contraseña(new String(passwordField.getPassword()));
+                    String usuario = userField.getText();
+                    String contraseña = new String(passwordField.getPassword());
                     Window_InicioSesión.this.dispose();
-                    new Window_Home().setVisible(true);
+                    Window_Home home = new Window_Home();
+                    home.setCredentials(usuario, contraseña);
+                    home.setVisible(true);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }

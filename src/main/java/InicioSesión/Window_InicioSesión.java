@@ -26,7 +26,27 @@ public class Window_InicioSesión extends JFrame {
     }
 
     private void createComponents() {
+        // Crear un JLayeredPane para permitir la superposición de componentes
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setPreferredSize(new Dimension(800, 400));
+
+        // Crear un JLabel para la imagen de fondo
+        ImageIcon backgroundImageIcon = new ImageIcon("src/main/resources/fondo-iniciosesion.png");
+        Image backgroundImage = backgroundImageIcon.getImage();
+        Image newBackgroundImage = backgroundImage.getScaledInstance(800, 400, java.awt.Image.SCALE_SMOOTH);
+        backgroundImageIcon = new ImageIcon(newBackgroundImage);
+        JLabel backgroundLabel = new JLabel(backgroundImageIcon);
+        backgroundLabel.setSize(800, 400);
+
+        // Añadir la imagen de fondo al JLayeredPane
+        layeredPane.add(backgroundLabel, Integer.valueOf(1));
+
+        // Crear el panel principal y añadirlo al JLayeredPane
         JPanel mainPanel = new JPanel(new GridBagLayout());
+        mainPanel.setOpaque(false); // Hacer el panel principal transparente
+        mainPanel.setBounds(0, 0, 800, 400);
+        layeredPane.add(mainPanel, Integer.valueOf(2));
+
         GridBagConstraints gbc = new GridBagConstraints();
 
         // Imagen
@@ -40,12 +60,14 @@ public class Window_InicioSesión extends JFrame {
         JLabel userLabel = new JLabel("Usuario:");
         userLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         userField = new JTextField(10);
+        userField.setText(""); // Establecer el campo de texto del usuario en blanco
         userIcon = new JLabel();
 
         // Contraseña
         JLabel passwordLabel = new JLabel("Contraseña:");
         passwordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         passwordField = new JPasswordField(10);
+        passwordField.setText(""); // Establecer el campo de texto de la contraseña en blanco
         passwordIcon = new JLabel();
 
         // botón icono usuario
@@ -99,9 +121,8 @@ public class Window_InicioSesión extends JFrame {
         gbc.gridx = 2;
         mainPanel.add(passwordField, gbc);
 
-        add(mainPanel);
-
-
+        // Añadir el JLayeredPane al JFrame
+        setContentPane(layeredPane);
 
         // iconos para que cuando se escriba en los campos de texto se valide si el usuario y la contraseña son correctos
         userField.getDocument().addDocumentListener(new DocumentListener() {
@@ -169,35 +190,6 @@ public class Window_InicioSesión extends JFrame {
                 }
             }
         });
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        mainPanel.add(userLabel, gbc);
-
-        gbc.gridx = 1;
-        mainPanel.add(userField, gbc);
-
-        gbc.gridx = 2;
-        mainPanel.add(userIcon, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        mainPanel.add(passwordLabel, gbc);
-
-        gbc.gridx = 1;
-        mainPanel.add(passwordField, gbc);
-
-        gbc.gridx = 2;
-        mainPanel.add(passwordIcon, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.gridwidth = 3;
-        mainPanel.add(submitButton, gbc);
-
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.NORTHEAST;
 
 
     }

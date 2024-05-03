@@ -58,14 +58,14 @@ public class Window_InicioSesión extends JFrame {
 
         // Usuario
         JLabel userLabel = new JLabel("Usuario:");
-        userLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        userLabel.setFont(new Font("Arial", Font.BOLD, 14));
         userField = new JTextField(10);
         userField.setText("");
         userIcon = new JLabel();
 
         // Contraseña
         JLabel passwordLabel = new JLabel("Contraseña:");
-        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        passwordLabel.setFont(new Font("Arial", Font.BOLD, 14));
         passwordField = new JPasswordField(10);
         passwordField.setText("");
         passwordIcon = new JLabel();

@@ -149,6 +149,7 @@ public class Window_InicioSesión extends JFrame {
         mainPanel.add(imageLabel, gbc);
 
         // Etiqueta "Usuario:"
+        gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.anchor = GridBagConstraints.CENTER;
@@ -156,21 +157,21 @@ public class Window_InicioSesión extends JFrame {
         mainPanel.add(userLabel, gbc);
 
         // Campo de texto del usuario
-        gbc.gridx = 2;
+        gbc.gridx = 1;
         mainPanel.add(userField, gbc);
 
         // Etiqueta "Contraseña:"
-        gbc.gridx = 1;
+        gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.anchor = GridBagConstraints.CENTER;
         mainPanel.add(passwordLabel, gbc);
 
         // Campo de texto de la contraseña
-        gbc.gridx = 2;
+        gbc.gridx = 1;
         mainPanel.add(passwordField, gbc);
 
         //Botón de inicio de sesión
-        gbc.gridx = 1;
+        gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;

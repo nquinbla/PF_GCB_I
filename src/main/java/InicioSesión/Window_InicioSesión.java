@@ -31,6 +31,9 @@ public class Window_InicioSesión extends JFrame {
 
         // Imagen
         ImageIcon imageIcon = new ImageIcon("src/main/resources/icono-iniciosesion.png");
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(90, 90,  java.awt.Image.SCALE_SMOOTH); // Aquí puedes ajustar el tamaño de la imagen
+        imageIcon = new ImageIcon(newimg);
         JLabel imageLabel = new JLabel(imageIcon);
 
         // Usuario

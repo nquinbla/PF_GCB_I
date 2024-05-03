@@ -31,7 +31,7 @@ public class Window_InicioSesión extends JFrame {
         layeredPane.setPreferredSize(new Dimension(800, 400));
 
         // Crear un JLabel para la imagen de fondo
-        ImageIcon backgroundImageIcon = new ImageIcon("src/main/resources/fondo-iniciosesion.png");
+        ImageIcon backgroundImageIcon = new ImageIcon("src/main/resources/fondo-iniciosesion.jpg");
         Image backgroundImage = backgroundImageIcon.getImage();
         Image newBackgroundImage = backgroundImage.getScaledInstance(800, 400, java.awt.Image.SCALE_SMOOTH);
         backgroundImageIcon = new ImageIcon(newBackgroundImage);
@@ -50,16 +50,16 @@ public class Window_InicioSesión extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
 
         // Imagen
-        ImageIcon imageIcon = new ImageIcon("src/main/resources/icono-iniciosesion.png");
+        ImageIcon imageIcon = new ImageIcon("src/main/resources/iconco-iniciosesion.png");
         Image image = imageIcon.getImage();
-        Image newimg = image.getScaledInstance(90, 90,  java.awt.Image.SCALE_SMOOTH);
+        Image newimg = image.getScaledInstance(120, 120,  Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newimg);
         JLabel imageLabel = new JLabel(imageIcon);
 
         // Usuario
         JLabel userLabel = new JLabel("Usuario:");
         userLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        userLabel.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
+        userLabel.setForeground(Color.WHITE);
         userField = new JTextField(10);
         userField.setText("");
         userIcon = new JLabel();
@@ -67,7 +67,7 @@ public class Window_InicioSesión extends JFrame {
         // Contraseña
         JLabel passwordLabel = new JLabel("Contraseña:");
         passwordLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        passwordLabel.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
+        passwordLabel.setForeground(Color.WHITE);
         passwordField = new JPasswordField(10);
         passwordField.setText("");
         passwordIcon = new JLabel();

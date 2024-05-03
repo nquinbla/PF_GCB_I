@@ -1,9 +1,12 @@
 package Home;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
 
 public class ExperimentWindow extends JFrame {
 
@@ -33,10 +36,26 @@ public class ExperimentWindow extends JFrame {
 
         // Botones
         JButton openExperimentButton = new JButton("Abrir Experimento");
-        // openExperimentButton.addActionListener(...); // Configura la acción aquí
+        openExperimentButton.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fileChooser.setAcceptAllFileFilterUsed(false);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
+            fileChooser.addChoosableFileFilter(filter);
+
+            int returnValue = fileChooser.showOpenDialog(null);
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                try {
+                    Desktop.getDesktop().open(selectedFile);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
+        });
 
         JButton createExperimentButton = new JButton("Crear Experimento");
-        // createExperimentButton.addActionListener(...); // Configura la acción aquí
+        createExperimentButton.addActionListener(e -> new SelectPopulationWindow().setVisible(true));
 
         // Botón de icono
         JButton homeButton = new JButton();
@@ -55,5 +74,9 @@ public class ExperimentWindow extends JFrame {
         mainPanel.add(homeButton, gbc);
 
         add(mainPanel);
+    }
+
+    public static void main(String[] args) {
+        new ExperimentWindow();
     }
 }

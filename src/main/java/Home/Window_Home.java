@@ -1,7 +1,5 @@
 package Home;
 
-import GestorCultivos.ExperimentWindow;
-
 import javax.swing.*;
 import java.awt.*;
 

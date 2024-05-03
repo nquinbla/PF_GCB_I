@@ -43,7 +43,7 @@ public class Window_InicioSesión extends JFrame {
 
         // Crear el panel principal y añadirlo al JLayeredPane
         JPanel mainPanel = new JPanel(new GridBagLayout());
-        mainPanel.setOpaque(false); // Hacer el panel principal transparente
+        mainPanel.setOpaque(false);
         mainPanel.setBounds(0, 0, 800, 400);
         layeredPane.add(mainPanel, Integer.valueOf(2));
 
@@ -52,7 +52,7 @@ public class Window_InicioSesión extends JFrame {
         // Imagen
         ImageIcon imageIcon = new ImageIcon("src/main/resources/icono-iniciosesion.png");
         Image image = imageIcon.getImage();
-        Image newimg = image.getScaledInstance(90, 90,  java.awt.Image.SCALE_SMOOTH); // Aquí puedes ajustar el tamaño de la imagen
+        Image newimg = image.getScaledInstance(90, 90,  java.awt.Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newimg);
         JLabel imageLabel = new JLabel(imageIcon);
 
@@ -60,31 +60,15 @@ public class Window_InicioSesión extends JFrame {
         JLabel userLabel = new JLabel("Usuario:");
         userLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         userField = new JTextField(10);
-        userField.setText(""); // Establecer el campo de texto del usuario en blanco
+        userField.setText("");
         userIcon = new JLabel();
 
         // Contraseña
         JLabel passwordLabel = new JLabel("Contraseña:");
         passwordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         passwordField = new JPasswordField(10);
-        passwordField.setText(""); // Establecer el campo de texto de la contraseña en blanco
+        passwordField.setText("");
         passwordIcon = new JLabel();
-
-        // botón icono usuario
-        JButton usuario = new JButton();
-        usuario.addActionListener(new UsuarioButtonAction());
-        ImageIcon icon1 = new ImageIcon("src/main/resources/icono-usuario.png");
-        Image img1 = icon1.getImage();
-        Image resizedImg1 = img1.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-        usuario.setIcon(new ImageIcon(resizedImg1));
-        usuario.setBorderPainted(false);
-        usuario.setContentAreaFilled(false);
-
-        // Panel del botón de usuario
-        JPanel userButtonPanel = new JPanel();
-        userButtonPanel.setLayout(new BoxLayout(userButtonPanel, BoxLayout.PAGE_AXIS));
-        userButtonPanel.add(Box.createVerticalGlue());
-        userButtonPanel.add(usuario);
 
         // Añadir componentes al panel principal
 
@@ -106,10 +90,6 @@ public class Window_InicioSesión extends JFrame {
         // Campo de texto del usuario
         gbc.gridx = 2;
         mainPanel.add(userField, gbc);
-
-        // Panel del botón de usuario
-        gbc.gridx = 2;
-        mainPanel.add(userButtonPanel, gbc);
 
         // Etiqueta "Contraseña:"
         gbc.gridx = 1;

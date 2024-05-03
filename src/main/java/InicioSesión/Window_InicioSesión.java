@@ -59,6 +59,7 @@ public class Window_InicioSesión extends JFrame {
         // Usuario
         JLabel userLabel = new JLabel("Usuario:");
         userLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        userLabel.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
         userField = new JTextField(10);
         userField.setText("");
         userIcon = new JLabel();
@@ -66,6 +67,7 @@ public class Window_InicioSesión extends JFrame {
         // Contraseña
         JLabel passwordLabel = new JLabel("Contraseña:");
         passwordLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        passwordLabel.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
         passwordField = new JPasswordField(10);
         passwordField.setText("");
         passwordIcon = new JLabel();

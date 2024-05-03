@@ -67,4 +67,12 @@ public class BacteriaPopulation {
     public void setFoodDose(FoodDose foodDose) {
         this.foodDose = foodDose;
     }
+
+    public void setEndDate(String text) {
+
+    }
+
+    public void setStartDate(String text) {
+
+    }
 }

@@ -40,9 +40,17 @@ public class Window_Home extends JFrame {
 
         // Botones de icono
         JButton iconButton1 = new JButton();
-        // iconButton1.setIcon(...); // Configura el icono aquí
+        ImageIcon icon1 = new ImageIcon(getClass().getResource("/icono-home.png"));
+        Image image1 = icon1.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        iconButton1.setIcon(new ImageIcon(image1));
+        iconButton1.addActionListener(e -> new Window_Home().setVisible(true));
+
         JButton iconButton2 = new JButton();
-        // iconButton2.setIcon(...); // Configura el icono aquí
+        ImageIcon icon2 = new ImageIcon(getClass().getResource("/icono-usuario.png"));
+        Image image2 = icon2.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        iconButton2.setIcon(new ImageIcon(image2));
+        iconButton2.addActionListener(e -> JOptionPane.showMessageDialog(this, "Usuario: " + usuario + "\nContraseña: " + contraseña));
+
 
         // Añadir componentes al panel principal
         gbc.gridx = 0;

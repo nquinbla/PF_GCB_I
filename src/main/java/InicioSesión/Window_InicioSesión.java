@@ -42,12 +42,11 @@ public class Window_InicioSesión extends JFrame {
         // Crear un JLabel para la imagen de fondo
         ImageIcon backgroundImageIcon;
         try {
-            backgroundImageIcon = new ImageIcon(ImageIO.read(new File("src/main/resources/pexels-adrien-olichon-1257089-2387793.jpg")));
+            backgroundImageIcon = new ImageIcon(ImageIO.read(new File("src/main/resources/fondo-iniciosesion.jpg")));
         } catch (IOException e) {
             e.printStackTrace();
             return;
         }
-
         Image backgroundImage = backgroundImageIcon.getImage();
 
 // Escalar la imagen con alta calidad

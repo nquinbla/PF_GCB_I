@@ -9,7 +9,7 @@ public class Window_Home extends JFrame {
 
     public Window_Home() {
         setTitle("Gestor de Experimentos: Home");
-        setSize(1000, 500);
+        setSize(1000, 500); // Cambia la altura a 500
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         createComponents();
         setLocationRelativeTo(null);
@@ -47,7 +47,7 @@ public class Window_Home extends JFrame {
         // Añadir componentes al panel principal
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(200, 0, 10, 0);
+        gbc.insets = new Insets(110, 0, 10, 0); // Ajusta el relleno en la parte superior
         topPanel.add(titleLabel, gbc);
 
         gbc.gridy = 1;
@@ -62,7 +62,7 @@ public class Window_Home extends JFrame {
 
         iconPanel.add(iconButton1);
         iconPanel.add(iconButton2);
-        iconPanel.setBorder(new EmptyBorder(50, 0, 0, 0)); // Añade relleno en la parte superior del panel
+        iconPanel.setBorder(new EmptyBorder(20, 0, 100, 0)); // Ajusta el relleno en la parte superior
 
         mainPanel.add(topPanel, BorderLayout.PAGE_START);
         mainPanel.add(iconPanel, BorderLayout.LINE_END);

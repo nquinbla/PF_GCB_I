@@ -48,4 +48,8 @@ public class SelectPopulationWindow extends JFrame {
 
         add(mainPanel);
     }
+
+    public static void main(String[] args) {
+        new SelectPopulationWindow();
+    }
 }

@@ -29,11 +29,9 @@ public class Window_InicioSesión extends JFrame {
         JPanel mainPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Título y subtítulo
-        JLabel titleLabel = new JLabel("Gestión de Cultivo de Bacillus subtillis", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
-        JLabel subtitleLabel = new JLabel("<html><body><b><i>Experimentos del laboratorio biologico de la <font color='blue'>UAX</font></i></b></body></html>", SwingConstants.CENTER);
-        subtitleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        // Imagen
+        ImageIcon imageIcon = new ImageIcon("src/main/resources/icono-iniciosesion.png");
+        JLabel imageLabel = new JLabel(imageIcon);
 
         // Usuario
         JLabel userLabel = new JLabel("Usuario:");
@@ -65,18 +63,13 @@ public class Window_InicioSesión extends JFrame {
 
         // Añadir componentes al panel principal
 
-        // Título
+        // Imagen
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 3;
         gbc.anchor = GridBagConstraints.PAGE_START;
         gbc.insets = new Insets(10, 0, 15, 0);
-        mainPanel.add(titleLabel, gbc);
-
-        // Subtítulo
-        gbc.gridy = 1;
-        gbc.insets = new Insets(0, 0, 50, 0);
-        mainPanel.add(subtitleLabel, gbc);
+        mainPanel.add(imageLabel, gbc);
 
         // Etiqueta "Usuario:"
         gbc.gridy = 1;

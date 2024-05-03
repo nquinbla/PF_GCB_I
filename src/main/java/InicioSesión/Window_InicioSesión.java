@@ -57,6 +57,12 @@ public class Window_InicioSesión extends JFrame {
         usuario.setBorderPainted(false);
         usuario.setContentAreaFilled(false);
 
+        // Panel del botón de usuario
+        JPanel userButtonPanel = new JPanel();
+        userButtonPanel.setLayout(new BoxLayout(userButtonPanel, BoxLayout.PAGE_AXIS));
+        userButtonPanel.add(Box.createVerticalGlue());
+        userButtonPanel.add(usuario);
+
         // Añadir componentes al panel principal
 
         // Título
@@ -84,10 +90,8 @@ public class Window_InicioSesión extends JFrame {
         mainPanel.add(userField, gbc);
 
         // Panel del botón de usuario
-        gbc.gridx = 2; // Cambiado a 2
-        gbc.gridy = 0; // Cambiado a 0
-        gbc.anchor = GridBagConstraints.NORTHEAST; // Cambiado a NORTHEAST
-        mainPanel.add(usuario, gbc);
+        gbc.gridx = 2;
+        mainPanel.add(userButtonPanel, gbc);
 
         // Etiqueta "Contraseña:"
         gbc.gridx = 0;

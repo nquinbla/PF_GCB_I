@@ -27,13 +27,12 @@ public class Window_InicioSesión extends JFrame {
     }
 
     private void createComponents() {
-
         // Crear un JLayeredPane para permitir la superposición de componentes
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new Dimension(800, 400));
 
         // Crear un JLabel para la imagen de fondo
-        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("/fondo-iniciosesion.jpg"));
+        ImageIcon backgroundImageIcon = new ImageIcon("src/main/resources/fondo-iniciosesion.jpg");
         Image backgroundImage = backgroundImageIcon.getImage();
 
         // Escalar la imagen con alta calidad

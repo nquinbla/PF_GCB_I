@@ -34,6 +34,7 @@ public class Window_InicioSesión extends JFrame {
     }
 
     private void createComponents() {
+
         // Crear un JLayeredPane para permitir la superposición de componentes
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new Dimension(800, 400));
@@ -41,15 +42,15 @@ public class Window_InicioSesión extends JFrame {
         // Crear un JLabel para la imagen de fondo
         ImageIcon backgroundImageIcon;
         try {
-            backgroundImageIcon = new ImageIcon(getClass().getResource("/pexels-adrien-olichon-1257089-2387793.jpg"));
-        } catch (Exception e) {
+            backgroundImageIcon = new ImageIcon(ImageIO.read(new File("src/main/resources/pexels-adrien-olichon-1257089-2387793.jpg")));
+        } catch (IOException e) {
             e.printStackTrace();
             return;
         }
 
         Image backgroundImage = backgroundImageIcon.getImage();
 
-        // Escalar la imagen con alta calidad
+// Escalar la imagen con alta calidad
         Image newBackgroundImage = backgroundImage.getScaledInstance(800, 400, java.awt.Image.SCALE_SMOOTH);
         BufferedImage resizedImg = new BufferedImage(800, 400, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = resizedImg.createGraphics();

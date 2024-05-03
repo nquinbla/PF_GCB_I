@@ -2,12 +2,14 @@ package Home;
 
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.border.EmptyBorder;
+
 
 public class Window_Home extends JFrame {
 
     public Window_Home() {
         setTitle("Gestor de Experimentos: Home");
-        setSize(1000, 600);
+        setSize(1000, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         createComponents();
         setLocationRelativeTo(null);
@@ -60,6 +62,7 @@ public class Window_Home extends JFrame {
 
         iconPanel.add(iconButton1);
         iconPanel.add(iconButton2);
+        iconPanel.setBorder(new EmptyBorder(50, 0, 0, 0)); // Añade relleno en la parte superior del panel
 
         mainPanel.add(topPanel, BorderLayout.PAGE_START);
         mainPanel.add(iconPanel, BorderLayout.LINE_END);

@@ -70,40 +70,6 @@ public class Window_InicioSesión extends JFrame {
         passwordField.setText("");
         passwordIcon = new JLabel();
 
-        // Añadir componentes al panel principal
-
-        // Imagen
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 3;
-        gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(10, 0, 15, 0);
-        mainPanel.add(imageLabel, gbc);
-
-        // Etiqueta "Usuario:"
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(10, 0, 0, 0);
-        mainPanel.add(userLabel, gbc);
-
-        // Campo de texto del usuario
-        gbc.gridx = 2;
-        mainPanel.add(userField, gbc);
-
-        // Etiqueta "Contraseña:"
-        gbc.gridx = 1;
-        gbc.gridy = 3;
-        gbc.anchor = GridBagConstraints.CENTER;
-        mainPanel.add(passwordLabel, gbc);
-
-        // Campo de texto de la contraseña
-        gbc.gridx = 2;
-        mainPanel.add(passwordField, gbc);
-
-        // Añadir el JLayeredPane al JFrame
-        setContentPane(layeredPane);
-
         // iconos para que cuando se escriba en los campos de texto se valide si el usuario y la contraseña son correctos
         userField.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
@@ -155,6 +121,7 @@ public class Window_InicioSesión extends JFrame {
             }
         });
 
+        // Botón de inicio de sesión
         JButton submitButton = new JButton("Iniciar sesión");
         submitButton.setFont(new Font("Arial", Font.PLAIN, 14));
         submitButton.addActionListener(new ActionListener() {
@@ -171,6 +138,47 @@ public class Window_InicioSesión extends JFrame {
             }
         });
 
+        // Añadir componentes al panel principal
+
+        // Imagen
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 3;
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        gbc.insets = new Insets(10, 0, 15, 0);
+        mainPanel.add(imageLabel, gbc);
+
+        // Etiqueta "Usuario:"
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(10, 0, 0, 0);
+        mainPanel.add(userLabel, gbc);
+
+        // Campo de texto del usuario
+        gbc.gridx = 2;
+        mainPanel.add(userField, gbc);
+
+        // Etiqueta "Contraseña:"
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.anchor = GridBagConstraints.CENTER;
+        mainPanel.add(passwordLabel, gbc);
+
+        // Campo de texto de la contraseña
+        gbc.gridx = 2;
+        mainPanel.add(passwordField, gbc);
+
+        //Botón de inicio de sesión
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(10, 0, 0, 0);
+        mainPanel.add(submitButton, gbc);
+
+        // Añadir el JLayeredPane al JFrame
+        setContentPane(layeredPane);
 
     }
 

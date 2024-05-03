@@ -122,7 +122,19 @@ public class ExperimentWindow extends JFrame {
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aquí necesitarás implementar la lógica para eliminar una población
+                // Obtener la población seleccionada
+                BacteriaPopulation selectedPopulation = populationList.getSelectedValue();
+
+                if (selectedPopulation != null) {
+                    // Eliminar la población seleccionada del experimento actual
+                    currentExperiment.removePopulation(selectedPopulation);
+
+                    // Actualizar la lista de poblaciones en la interfaz de usuario
+                    populationList.setListData(currentExperiment.getPopulations().toArray(new BacteriaPopulation[0]));
+                } else {
+                    // Mostrar un mensaje si no se seleccionó ninguna población
+                    JOptionPane.showMessageDialog(null, "Por favor, selecciona una población para eliminar.");
+                }
             }
         });
     }

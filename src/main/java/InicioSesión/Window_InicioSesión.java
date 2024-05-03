@@ -79,14 +79,14 @@ public class Window_InicioSesión extends JFrame {
         mainPanel.add(subtitleLabel, gbc);
 
         // Etiqueta "Usuario:"
-        gbc.gridy = 2;
+        gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(10, 0, 0, 0);
         mainPanel.add(userLabel, gbc);
 
         // Campo de texto del usuario
-        gbc.gridx = 1;
+        gbc.gridx = 2;
         mainPanel.add(userField, gbc);
 
         // Panel del botón de usuario
@@ -94,13 +94,13 @@ public class Window_InicioSesión extends JFrame {
         mainPanel.add(userButtonPanel, gbc);
 
         // Etiqueta "Contraseña:"
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.anchor = GridBagConstraints.CENTER;
         mainPanel.add(passwordLabel, gbc);
 
         // Campo de texto de la contraseña
-        gbc.gridx = 1;
+        gbc.gridx = 2;
         mainPanel.add(passwordField, gbc);
 
         add(mainPanel);

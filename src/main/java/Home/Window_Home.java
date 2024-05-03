@@ -7,7 +7,7 @@ public class Window_Home extends JFrame {
 
     public Window_Home() {
         setTitle("Gestor de Experimentos");
-        setSize(800, 400);
+        setSize(1000, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         createComponents();
         setLocationRelativeTo(null);

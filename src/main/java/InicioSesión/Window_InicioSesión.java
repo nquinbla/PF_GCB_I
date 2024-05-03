@@ -57,7 +57,6 @@ public class Window_InicioSesión extends JFrame {
         g2.drawImage(newBackgroundImage, 0, 0, 800, 400, null);
         g2.dispose();
 
-
         backgroundImageIcon = new ImageIcon(resizedImg);
         JLabel backgroundLabel = new JLabel(backgroundImageIcon);
         backgroundLabel.setSize(800, 400);

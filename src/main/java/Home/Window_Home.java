@@ -60,4 +60,8 @@ public class Window_Home extends JFrame {
 
         add(mainPanel);
     }
+
+    public static void main(String[] args) {
+        new Window_Home();
+    }
 }

@@ -20,6 +20,10 @@ public class Window_InicioSesión extends JFrame {
     private JLabel userIcon;
     private JLabel passwordIcon;
 
+    private boolean darkModeEnabled = false;
+    private boolean colorBlindModeEnabled = false;
+
+
     public Window_InicioSesión() {
         setTitle("Gestor de Experimentos: Inicio Sesión");
         setSize(800, 400);
@@ -37,8 +41,8 @@ public class Window_InicioSesión extends JFrame {
         // Crear un JLabel para la imagen de fondo
         ImageIcon backgroundImageIcon;
         try {
-            backgroundImageIcon = new ImageIcon(ImageIO.read(new File("src/main/resources/fondo-iniciosesion.jpg")));
-        } catch (IOException e) {
+            backgroundImageIcon = new ImageIcon(getClass().getResource("/pexels-adrien-olichon-1257089-2387793.jpg"));
+        } catch (Exception e) {
             e.printStackTrace();
             return;
         }
@@ -149,17 +153,29 @@ public class Window_InicioSesión extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String usuario = userField.getText();
-                    String contraseña = new String(passwordField.getPassword());
+                    Usuario usuario = new Usuario(userField.getText());
+                    Contraseña contraseña = new Contraseña(new String(passwordField.getPassword()));
                     Window_InicioSesión.this.dispose();
-                    Window_Home home = new Window_Home();
-                    home.setCredentials(usuario, contraseña);
-                    home.setVisible(true);
+                    new Window_Home().setVisible(true);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
             }
         });
+
+
+        // Para el modo oscuro, podrías usar colores oscuros para el fondo y colores claros para el texto.
+        if (darkModeEnabled) {
+            submitButton.setBackground(Color.BLACK);
+            submitButton.setForeground(Color.WHITE);
+        }
+
+        // Para el modo daltónico, podrías usar colores que sean fácilmente distinguibles para las personas con daltonismo.
+        // Aquí se utiliza el azul y el negro como ejemplo, pero los colores exactos que deberías usar dependerán del tipo específico de daltonismo que estés intentando acomodar.
+        if (colorBlindModeEnabled) {
+            submitButton.setBackground(Color.BLUE);
+            submitButton.setForeground(Color.BLACK);
+        }
 
         // Añadir componentes al panel principal
 

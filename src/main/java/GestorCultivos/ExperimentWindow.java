@@ -10,7 +10,7 @@ public class ExperimentWindow extends JFrame {
     private Experiment currentExperiment;
 
     public ExperimentWindow() {
-        setTitle("Gestor de Cultivos");
+        setTitle("Gestor de Cultivos de Bacterias");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());

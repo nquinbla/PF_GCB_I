@@ -47,7 +47,7 @@ public class Window_Home extends JFrame {
         // Añadir componentes al panel principal
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(110, 0, 10, 0); // Ajusta el relleno en la parte superior
+        gbc.insets = new Insets(110, 0, 10, 0);
         topPanel.add(titleLabel, gbc);
 
         gbc.gridy = 1;
@@ -62,7 +62,7 @@ public class Window_Home extends JFrame {
 
         iconPanel.add(iconButton1);
         iconPanel.add(iconButton2);
-        iconPanel.setBorder(new EmptyBorder(20, 0, 100, 0)); // Ajusta el relleno en la parte superior
+        iconPanel.setBorder(new EmptyBorder(20, 0, 100, 0));
 
         mainPanel.add(topPanel, BorderLayout.PAGE_START);
         mainPanel.add(iconPanel, BorderLayout.LINE_END);

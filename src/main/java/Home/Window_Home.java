@@ -1,6 +1,9 @@
 package Home;
 
+import GestorCultivos.ExperimentWindow;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class Window_Home extends JFrame {
 

@@ -1,5 +1,9 @@
 package Home;
 
+import GestorCultivos.BacteriaPopulation;
+import GestorCultivos.Experiment;
+import GestorCultivos.PopulationManager;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -7,6 +11,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class ExperimentWindow extends JFrame {
 
@@ -79,7 +87,33 @@ public class ExperimentWindow extends JFrame {
         });
 
         JButton createExperimentButton = new JButton("Crear Experimento");
-        createExperimentButton.addActionListener(e -> new SelectPopulationWindow().setVisible(true));
+        createExperimentButton.addActionListener(e -> {
+            // Obtener las poblaciones creadas
+            Map<String, BacteriaPopulation> bacteriaPopulations = PopulationManager.getInstance().getPopulations();
+
+            if (bacteriaPopulations.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No hay poblaciones creadas.");
+            } else {
+                // Convertir las claves del mapa a una lista y ordenarla
+                List<String> populationNames = new ArrayList<>(bacteriaPopulations.keySet());
+                Collections.sort(populationNames);
+
+                // Crear un JComboBox con los nombres de las poblaciones
+                JComboBox<String> populationBox = new JComboBox<>(populationNames.toArray(new String[0]));
+
+                int result = JOptionPane.showConfirmDialog(null, populationBox, "Selecciona la población para el experimento",
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (result == JOptionPane.OK_OPTION) {
+                    String selectedPopulation = (String) populationBox.getSelectedItem();
+                    BacteriaPopulation population = bacteriaPopulations.get(selectedPopulation);
+
+                    // Aquí puedes usar la población seleccionada para crear el experimento
+                    // Por ejemplo:
+                    Experiment experiment = new Experiment(population);
+                    // ...
+                }
+            }
+        });
 
         // Botón de icono
         JButton homeButton = new JButton();

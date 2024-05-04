@@ -68,11 +68,14 @@ public class BacteriaPopulation {
         this.foodDose = foodDose;
     }
 
-    public void setEndDate(String text) {
+    public void setEndDate(String text) {}
 
-    }
+    public void setStartDate(String text) {}
 
-    public void setStartDate(String text) {
-
+    public int calculatePopulationForDay(int day) {
+        if (day < 0 || day > 30) {
+            throw new IllegalArgumentException("El día debe estar en el rango de 0 a 30");
+        }
+        return initialBacteriaCount * (int) Math.pow(2, day);
     }
 }

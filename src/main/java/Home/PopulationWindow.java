@@ -82,7 +82,13 @@ public class PopulationWindow extends JFrame {
 
         // Botón de icono
         JButton homeButton = new JButton();
-        // homeButton.setIcon(...); // Configura el icono aquí
+        try {
+            ImageIcon homeIcon = new ImageIcon(getClass().getResource("/icono-home.png"));
+            Image homeImage = homeIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            homeButton.setIcon(new ImageIcon(homeImage));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         homeButton.addActionListener(e -> new Window_Home().setVisible(true));
 
         // Añadir componentes al panel principal

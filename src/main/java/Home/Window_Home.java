@@ -5,8 +5,6 @@ import java.awt.*;
 import javax.swing.border.EmptyBorder;
 
 public class Window_Home extends JFrame {
-    private static final int WINDOW_WIDTH = 1000;
-    private static final int WINDOW_HEIGHT = 500;
 
     private String usuario;
     private String contraseña;
@@ -18,7 +16,7 @@ public class Window_Home extends JFrame {
 
     public Window_Home() {
         setTitle("Gestor de Experimentos: Home");
-        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        setSize(1000, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         createComponents();
         setLocationRelativeTo(null);
@@ -26,15 +24,40 @@ public class Window_Home extends JFrame {
     }
 
     private void createComponents() {
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        JPanel topPanel = new JPanel(new GridBagLayout());
-        JPanel iconPanel = new JPanel();
-        iconPanel.setLayout(new BoxLayout(iconPanel, BoxLayout.PAGE_AXIS));
+
+        // Crear un JLayeredPane para permitir la superposición de componentes
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setPreferredSize(new Dimension(1000, 500));
+
+        // Crear un JLabel para la imagen de fondo
+        ImageIcon backgroundImageIcon;
+        try {
+            backgroundImageIcon = new ImageIcon("src/main/resources/fondo-laboratorio2.jpg");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Image backgroundImage = backgroundImageIcon.getImage();
+        Image newBackgroundImage = backgroundImage.getScaledInstance(1000, 500, Image.SCALE_SMOOTH);
+        backgroundImageIcon = new ImageIcon(newBackgroundImage);
+        JLabel backgroundLabel = new JLabel(backgroundImageIcon);
+        backgroundLabel.setBounds(0, 0, 1000, 500);
+
+        // Añadir la imagen de fondo al JLayeredPane
+        layeredPane.add(backgroundLabel, Integer.valueOf(1));
+
+        // Crear el panel principal y añadirlo al JLayeredPane
+        JPanel mainPanel = new JPanel(new GridBagLayout());
+        mainPanel.setOpaque(false);
+        mainPanel.setBounds(0, 0, 1000, 500);
+        layeredPane.add(mainPanel, Integer.valueOf(2));
+
         GridBagConstraints gbc = new GridBagConstraints();
 
         // Título y subtítulo
         JLabel titleLabel = new JLabel("Gestor de Experimentos", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 42));
         JLabel subtitleLabel = new JLabel("<html><body>Laboratorios biologicos <font color='blue'>UAX</font></body></html>", SwingConstants.CENTER);
         subtitleLabel.setFont(new Font("Arial", Font.BOLD, 18));
 
@@ -64,31 +87,27 @@ public class Window_Home extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(110, 0, 10, 0);
-        topPanel.add(titleLabel, gbc);
+        mainPanel.add(titleLabel, gbc);
 
         gbc.gridy = 1;
         gbc.insets = new Insets(10, 0, 10, 0);
-        topPanel.add(subtitleLabel, gbc);
+        mainPanel.add(subtitleLabel, gbc);
 
         gbc.gridy = 2;
-        topPanel.add(experimentButton, gbc);
+        mainPanel.add(experimentButton, gbc);
 
         gbc.gridy = 3;
-        topPanel.add(bacteriaButton, gbc);
+        mainPanel.add(bacteriaButton, gbc);
 
-        iconPanel.add(iconButton1);
-        iconPanel.add(iconButton2);
-        iconPanel.setBorder(new EmptyBorder(20, 0, 100, 0));
+        gbc.gridy = 4;
+        mainPanel.add(iconButton1, gbc);
 
-        mainPanel.add(topPanel, BorderLayout.PAGE_START);
-        mainPanel.add(iconPanel, BorderLayout.LINE_END);
+        gbc.gridy = 5;
+        mainPanel.add(iconButton2, gbc);
 
-        // Add background image
-        JLabel backgroundImage = new JLabel(new ImageIcon(getClass().getResource("/fondo-laboratorio2.jpg")));
-        backgroundImage.setLayout(new BorderLayout());
-        mainPanel.add(backgroundImage, BorderLayout.CENTER);
+        mainPanel.setBorder(new EmptyBorder(20, 0, 100, 0));
 
-        add(mainPanel);
+        setContentPane(layeredPane);
     }
 
     public static void main(String[] args) {

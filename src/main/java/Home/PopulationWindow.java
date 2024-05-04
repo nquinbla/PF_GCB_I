@@ -91,7 +91,7 @@ public class PopulationWindow extends JFrame {
             JTextField temperatureField = new JTextField();
             JComboBox<String> lightConditionsBox = new JComboBox<>(new String[]{"Alta", "Media", "Baja"});
             JButton foodDoseButton = new JButton("Configurar Dosis de Alimento");
-            FoodDose[] foodDose = new FoodDose[1]; // Usamos un array para poder modificarlo dentro del listener
+            FoodDose[] foodDose = new FoodDose[1];
 
             foodDoseButton.addActionListener(e1 -> {
                 JTextField initialFoodAmountField = new JTextField();
@@ -207,8 +207,42 @@ public class PopulationWindow extends JFrame {
             }
         });
 
-        JButton infoPopulationButton = new JButton("Ver Info Población");
-        // infoPopulationButton.addActionListener(...); // Configura la acción aquí
+        JButton infoPopulationButton = new JButton("Ver Info Población"); // Botón para ver la información de una población
+        infoPopulationButton.addActionListener(e -> {
+            String populationName = JOptionPane.showInputDialog(this, "Introduce el nombre de la población:");
+            if (populationName != null) {
+                BacteriaPopulation population = bacteriaPopulations.get(populationName);
+                if (population != null) {
+                    FoodDose foodDose = population.getFoodDose();
+                    String message = String.format(
+                            "Nombre de la especie: %s\n" +
+                                    "Fecha de inicio: %s\n" +
+                                    "Fecha de fin: %s\n" +
+                                    "Conteo inicial de bacterias: %d\n" +
+                                    "Temperatura: %.2f\n" +
+                                    "Condiciones de luz: %s\n" +
+                                    "Dosis de alimento:\n" +
+                                    "  - Cantidad inicial de alimento: %d\n" +
+                                    "  - Aumentar hasta el día: %d\n" +
+                                    "  - Cantidad de alimento en el día de aumento: %d\n" +
+                                    "  - Cantidad final de alimento: %d",
+                            population.getName(),
+                            population.getStartDate(),
+                            population.getEndDate(),
+                            population.getInitialBacteriaCount(),
+                            population.getTemperature(),
+                            population.getLightConditions(),
+                            foodDose.getInitialFoodAmount(),
+                            foodDose.getIncreaseUntilDay(),
+                            foodDose.getFoodAmountOnIncreaseDay(),
+                            foodDose.getFinalFoodAmount()
+                    );
+                    JOptionPane.showMessageDialog(this, message);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Población '" + populationName + "' no encontrada.");
+                }
+            }
+        });
 
         // Botón de icono
         JButton homeButton = new JButton();

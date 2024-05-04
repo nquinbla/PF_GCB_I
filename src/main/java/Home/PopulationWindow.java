@@ -1,6 +1,7 @@
 package Home;
 
 import GestorCultivos.BacteriaPopulation;
+import GestorCultivos.FoodDose;
 
 import javax.swing.*;
 import java.awt.*;
@@ -76,19 +77,56 @@ public class PopulationWindow extends JFrame {
 
         // Botones
 
-        JButton createPopulationButton = new JButton("Crear Población"); // botón para crear una nueva población
+        JButton createPopulationButton = new JButton("Crear Población");
         createPopulationButton.addActionListener(e -> {
-            String populationName = JOptionPane.showInputDialog(this, "Introduce el nombre de la nueva población:");
-            if (populationName != null && !populationName.trim().isEmpty()) {
-                if (bacteriaPopulations.containsKey(populationName)) {
-                    JOptionPane.showMessageDialog(this, "Ya existe una población con ese nombre. Por favor, elige otro nombre.");
-                } else {
-                    BacteriaPopulation newPopulation = new BacteriaPopulation();
-                    bacteriaPopulations.put(populationName, newPopulation);
-                    JOptionPane.showMessageDialog(this, "Población '" + populationName + "' creada con éxito.");
-                }
+            // Crear panel con campos de texto
+            JPanel panel = new JPanel(new GridLayout(0, 1));
+            JTextField nameField = new JTextField();
+            JTextField startDateField = new JTextField();
+            JTextField endDateField = new JTextField();
+            JTextField initialCountField = new JTextField();
+            JTextField temperatureField = new JTextField();
+            JTextField lightConditionsField = new JTextField();
+            JTextField foodDoseField = new JTextField();
+            panel.add(new JLabel("Nombre de la especie:"));
+            panel.add(nameField);
+            panel.add(new JLabel("Fecha de inicio (dd/MM/yyyy):"));
+            panel.add(startDateField);
+            panel.add(new JLabel("Fecha de fin (dd/MM/yyyy):"));
+            panel.add(endDateField);
+            panel.add(new JLabel("Conteo inicial de bacterias:"));
+            panel.add(initialCountField);
+            panel.add(new JLabel("Temperatura:"));
+            panel.add(temperatureField);
+            panel.add(new JLabel("Condiciones de luz:"));
+            panel.add(lightConditionsField);
+            panel.add(new JLabel("Dosis de alimento:"));
+            panel.add(foodDoseField);
+
+            int result = JOptionPane.showConfirmDialog(null, panel, "Introduce los datos de la población",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (result == JOptionPane.OK_OPTION) {
+                String name = nameField.getText();
+                String startDate = startDateField.getText();
+                String endDate = endDateField.getText();
+                int initialCount = Integer.parseInt(initialCountField.getText());
+                double temperature = Double.parseDouble(temperatureField.getText());
+                String lightConditions = lightConditionsField.getText();
+                String foodDose = foodDoseField.getText();
+
+                BacteriaPopulation newPopulation = new BacteriaPopulation();
+                newPopulation.setName(name);
+                newPopulation.setStartDate(startDate);
+                newPopulation.setEndDate(endDate);
+                newPopulation.setInitialBacteriaCount(initialCount);
+                newPopulation.setTemperature(temperature);
+                newPopulation.setLightConditions(lightConditions);
+                newPopulation.setFoodDose(new FoodDose(foodDose)); // Asume que FoodDose tiene un constructor que toma un String
+
+                bacteriaPopulations.put(name, newPopulation);
+                JOptionPane.showMessageDialog(this, "Población '" + name + "' creada con éxito.");
             } else {
-                JOptionPane.showMessageDialog(this, "El nombre de la población no puede estar vacío.");
+                JOptionPane.showMessageDialog(this, "Creación de población cancelada.");
             }
         });
 

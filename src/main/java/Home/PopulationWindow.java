@@ -2,6 +2,7 @@ package Home;
 
 import GestorCultivos.BacteriaPopulation;
 import GestorCultivos.FoodDose;
+import GestorCultivos.PopulationManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -159,6 +160,7 @@ public class PopulationWindow extends JFrame {
                 newPopulation.setLightConditions(lightConditions);
                 newPopulation.setFoodDose(foodDose[0]);
 
+                PopulationManager.getInstance().getPopulations().put(newPopulation.getName(), newPopulation);
                 bacteriaPopulations.put(name, newPopulation);
                 JOptionPane.showMessageDialog(this, "Población '" + name + "' creada con éxito.");
             } else {

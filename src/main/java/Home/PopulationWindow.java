@@ -163,8 +163,18 @@ public class PopulationWindow extends JFrame {
             }
         });
 
-        JButton viewPopulationButton = new JButton("Visualizar Población");
-        // viewPopulationButton.addActionListener(...); // Configura la acción aquí
+        JButton viewPopulationButton = new JButton("Visualizar Población"); // Botón para ver las poblaciones creadas
+        viewPopulationButton.addActionListener(e -> {
+            if (bacteriaPopulations.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No hay poblaciones creadas.");
+            } else {
+                StringBuilder populationsList = new StringBuilder();
+                for (String name : bacteriaPopulations.keySet()) {
+                    populationsList.append(name).append("\n");
+                }
+                JOptionPane.showMessageDialog(this, "Poblaciones creadas:\n" + populationsList.toString());
+            }
+        });
 
         JButton deletePopulationButton = new JButton("Borrar Población");
         // deletePopulationButton.addActionListener(...); // Configura la acción aquí

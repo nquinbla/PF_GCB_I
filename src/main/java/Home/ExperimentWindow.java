@@ -43,13 +43,13 @@ public class ExperimentWindow extends JFrame {
 
         // Título
         JLabel titleLabel = new JLabel("Experimentos");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 42));
         titleLabel.setForeground(Color.WHITE);
 
         // Subtítulo
         JLabel subtitleLabel = new JLabel("Con bacterias");
-        subtitleLabel.setFont(new Font("Arial", Font.PLAIN, 18));
-        subtitleLabel.setForeground(Color.WHITE);
+        subtitleLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
+        subtitleLabel.setForeground(Color.LIGHT_GRAY);
 
         // Botones
         JButton openExperimentButton = new JButton("Abrir Experimento");
@@ -83,10 +83,11 @@ public class ExperimentWindow extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 0, 10, 0); // Añade un margen superior e inferior de 10
+        gbc.insets = new Insets(10, 0, 10, 0); 
         background.add(titleLabel, gbc);
 
         gbc.gridy = 1;
+        gbc.insets = new Insets(5, 0, 10, 0);
         background.add(subtitleLabel, gbc);
 
         // Añadir los botones

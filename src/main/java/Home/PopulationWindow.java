@@ -46,7 +46,7 @@ public class PopulationWindow extends JFrame {
         // Crear un JLabel para la imagen de fondo
         ImageIcon backgroundImageIcon;
         try {
-            backgroundImageIcon = new ImageIcon("src/main/resources/fondo-laboratorio2.jpg");
+            backgroundImageIcon = new ImageIcon("src/main/resources/fondo-laboratorio4.jpg");
         } catch (Exception e) {
             e.printStackTrace();
             return;

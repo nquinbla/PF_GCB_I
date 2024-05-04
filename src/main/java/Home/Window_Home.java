@@ -4,18 +4,21 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
 
-
 public class Window_Home extends JFrame {
+    private static final int WINDOW_WIDTH = 1000;
+    private static final int WINDOW_HEIGHT = 500;
+
     private String usuario;
     private String contraseña;
 
     public void setCredentials(String usuario, String contraseña) {
         this.usuario = usuario;
-        this.contraseña = contraseña;}
+        this.contraseña = contraseña;
+    }
 
     public Window_Home() {
         setTitle("Gestor de Experimentos: Home");
-        setSize(1000, 500); // Cambia la altura a 500
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         createComponents();
         setLocationRelativeTo(null);
@@ -57,7 +60,6 @@ public class Window_Home extends JFrame {
         iconButton2.setIcon(new ImageIcon(image2));
         iconButton2.addActionListener(e -> JOptionPane.showMessageDialog(this, "Usuario: " + usuario + "\nContraseña: " + contraseña));
 
-
         // Añadir componentes al panel principal
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -80,6 +82,11 @@ public class Window_Home extends JFrame {
 
         mainPanel.add(topPanel, BorderLayout.PAGE_START);
         mainPanel.add(iconPanel, BorderLayout.LINE_END);
+
+        // Add background image
+        JLabel backgroundImage = new JLabel(new ImageIcon(getClass().getResource("/fondo-laboratorio2.jpg")));
+        backgroundImage.setLayout(new BorderLayout());
+        mainPanel.add(backgroundImage, BorderLayout.CENTER);
 
         add(mainPanel);
     }

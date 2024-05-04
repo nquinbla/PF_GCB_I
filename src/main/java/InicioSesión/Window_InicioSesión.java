@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import Home.Window_Home;
 
@@ -42,24 +43,17 @@ public class Window_InicioSesión extends JFrame {
         // Crear un JLabel para la imagen de fondo
         ImageIcon backgroundImageIcon;
         try {
-            backgroundImageIcon = new ImageIcon(ImageIO.read(new File("src/main/resources/fondo-iniciosesion.jpg")));
-        } catch (IOException e) {
+            backgroundImageIcon = new ImageIcon("src/main/resources/fondo-iniciosesion.jpg");
+        } catch (Exception e) {
             e.printStackTrace();
             return;
         }
+
         Image backgroundImage = backgroundImageIcon.getImage();
-
-// Escalar la imagen con alta calidad
-        Image newBackgroundImage = backgroundImage.getScaledInstance(800, 400, java.awt.Image.SCALE_SMOOTH);
-        BufferedImage resizedImg = new BufferedImage(800, 400, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2 = resizedImg.createGraphics();
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2.drawImage(newBackgroundImage, 0, 0, 800, 400, null);
-        g2.dispose();
-
-        backgroundImageIcon = new ImageIcon(resizedImg);
+        Image newBackgroundImage = backgroundImage.getScaledInstance(800, 400, Image.SCALE_SMOOTH);
+        backgroundImageIcon = new ImageIcon(newBackgroundImage);
         JLabel backgroundLabel = new JLabel(backgroundImageIcon);
-        backgroundLabel.setSize(800, 400);
+        backgroundLabel.setBounds(0, 0, 800, 400);
 
         // Añadir la imagen de fondo al JLayeredPane
         layeredPane.add(backgroundLabel, Integer.valueOf(1));

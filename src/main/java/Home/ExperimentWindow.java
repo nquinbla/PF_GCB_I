@@ -31,8 +31,15 @@ public class ExperimentWindow extends JFrame {
     }
 
     private void createComponents() {
-        JPanel mainPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        // Crear un JLabel para el fondo
+        JLabel background = new JLabel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(new ImageIcon("src/main/resources/fondo-laboratorio1.jpg").getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        background.setLayout(new GridBagLayout());
 
         // Botones
         JButton openExperimentButton = new JButton("Abrir Experimento");
@@ -62,18 +69,19 @@ public class ExperimentWindow extends JFrame {
         // homeButton.setIcon(...); // Configura el icono aquí
         homeButton.addActionListener(e -> new Window_Home().setVisible(true));
 
-        // Añadir componentes al panel principal
+        // Añadir componentes al JLabel de fondo
+        GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        mainPanel.add(openExperimentButton, gbc);
+        background.add(openExperimentButton, gbc);
 
         gbc.gridy = 1;
-        mainPanel.add(createExperimentButton, gbc);
+        background.add(createExperimentButton, gbc);
 
         gbc.gridy = 2;
-        mainPanel.add(homeButton, gbc);
+        background.add(homeButton, gbc);
 
-        add(mainPanel);
+        add(background);
     }
 
     // Método main para probar la ventana

@@ -1,7 +1,11 @@
 package Home;
 
+import GestorCultivos.BacteriaPopulation;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.border.EmptyBorder;
 
 public class Window_Home extends JFrame {
@@ -66,8 +70,14 @@ public class Window_Home extends JFrame {
 
         // Botones
         JButton experimentButton = new JButton("Experimento");
-        // experimentButton.setIcon(...); // Configura el icono aquí
-        experimentButton.addActionListener(e -> new ExperimentWindow().setVisible(true));
+        experimentButton.addActionListener(e -> {
+            Map<String, BacteriaPopulation> bacteriaPopulations = new HashMap<>();
+            // Aquí puedes añadir poblaciones de bacterias a bacteriaPopulations
+            // Por ejemplo:
+            // bacteriaPopulations.put("Population1", new BacteriaPopulation());
+            // bacteriaPopulations.put("Population2", new BacteriaPopulation());
+            new ExperimentWindow(bacteriaPopulations).setVisible(true);
+        });
 
         JButton bacteriaButton = new JButton("Poblaciones Bacterianas");
         // bacteriaButton.setIcon(...); // Configura el icono aquí

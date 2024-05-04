@@ -2,7 +2,6 @@ package Home;
 
 import GestorCultivos.BacteriaPopulation;
 import GestorCultivos.Experiment;
-import GestorCultivos.PopulationManager;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -11,16 +10,18 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 public class ExperimentWindow extends JFrame {
     private JComboBox<String> populationBox;
     private Map<String, BacteriaPopulation> bacteriaPopulations;
 
-    public ExperimentWindow() {
+    public ExperimentWindow(Map<String, BacteriaPopulation> bacteriaPopulations) {
+        this.bacteriaPopulations = bacteriaPopulations;
+        this.populationBox = new JComboBox<>(new Vector<>(bacteriaPopulations.keySet()));
+
         setTitle("Gestor de Experimentos: Experimento");
         setSize(800, 400);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -140,6 +141,7 @@ public class ExperimentWindow extends JFrame {
 
     // Método main para probar la ventana
     public static void main(String[] args) {
-        new ExperimentWindow().setVisible(true);
+        Map<String, BacteriaPopulation> bacteriaPopulations = new HashMap<>();
+        new ExperimentWindow(bacteriaPopulations).setVisible(true);
     }
 }

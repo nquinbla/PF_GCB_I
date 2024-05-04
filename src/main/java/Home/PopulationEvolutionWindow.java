@@ -4,13 +4,17 @@ import GestorCultivos.BacteriaPopulation;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 public class PopulationEvolutionWindow extends JFrame {
     private BacteriaPopulation bacteriaPopulation;
+    private JTextArea populationAttributesArea;
 
     public PopulationEvolutionWindow(BacteriaPopulation bacteriaPopulation) {
         this.bacteriaPopulation = bacteriaPopulation;
+        this.populationAttributesArea = new JTextArea();
 
         setTitle("Evolución de la Población");
         setSize(300, 200);
@@ -41,8 +45,20 @@ public class PopulationEvolutionWindow extends JFrame {
             populationLabel.setText("La población de bacterias para el día " + selectedDay + " es " + population);
         });
 
+        JButton endExperimentButton = new JButton("Finalizar Experimento");
+        endExperimentButton.addActionListener(e -> {
+            this.dispose();
+            Map<String, BacteriaPopulation> bacteriaPopulations = new HashMap<>();
+            // Aquí puedes añadir poblaciones de bacterias a bacteriaPopulations
+            // Por ejemplo:
+            // bacteriaPopulations.put("Population1", new BacteriaPopulation());
+            // bacteriaPopulations.put("Population2", new BacteriaPopulation());
+            new ExperimentWindow(bacteriaPopulations).setVisible(true);
+        });
+
         mainPanel.add(daySelector);
         mainPanel.add(populationLabel);
+        mainPanel.add(endExperimentButton);
 
         add(mainPanel);
     }

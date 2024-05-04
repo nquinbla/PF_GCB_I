@@ -22,7 +22,6 @@ public class ExperimentLoader {
             int initialBacteriaCount = Integer.parseInt(parts[3]);
             double temperature = Double.parseDouble(parts[4]);
             String lightConditions = parts[5];
-            // FoodDose foodDose = new FoodDose();
 
             BacteriaPopulation population = new BacteriaPopulation();
             population.setName(name);
@@ -31,7 +30,6 @@ public class ExperimentLoader {
             population.setInitialBacteriaCount(initialBacteriaCount);
             population.setTemperature(temperature);
             population.setLightConditions(lightConditions);
-            // population.setFoodDose(foodDose);
 
             experiment.addPopulation(population);
         }

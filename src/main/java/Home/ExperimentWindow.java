@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ExperimentWindow extends JFrame {
+    private JComboBox<String> populationBox;
+    private Map<String, BacteriaPopulation> bacteriaPopulations;
 
     public ExperimentWindow() {
         setTitle("Gestor de Experimentos: Experimento");
@@ -88,30 +90,14 @@ public class ExperimentWindow extends JFrame {
 
         JButton createExperimentButton = new JButton("Crear Experimento"); // Botón para crear un experimento
         createExperimentButton.addActionListener(e -> {
-            // Obtener las poblaciones creadas
-            Map<String, BacteriaPopulation> bacteriaPopulations = PopulationManager.getInstance().getPopulations();
+            String selectedPopulation = (String) populationBox.getSelectedItem();
+            BacteriaPopulation population = bacteriaPopulations.get(selectedPopulation);
 
-            if (bacteriaPopulations.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No hay poblaciones creadas.");
-            } else {
-                // Convertir las claves del mapa a una lista y ordenarla
-                List<String> populationNames = new ArrayList<>(bacteriaPopulations.keySet());
-                Collections.sort(populationNames);
+            Experiment experiment = new Experiment();
+            experiment.addPopulation(population);
+            JOptionPane.showMessageDialog(this, "Experimento creado con éxito.");
 
-                // Crear un JComboBox con los nombres de las poblaciones
-                JComboBox<String> populationBox = new JComboBox<>(populationNames.toArray(new String[0]));
-
-                int result = JOptionPane.showConfirmDialog(null, populationBox, "Selecciona la población para el experimento",
-                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-                if (result == JOptionPane.OK_OPTION) {
-                    String selectedPopulation = (String) populationBox.getSelectedItem();
-                    BacteriaPopulation population = bacteriaPopulations.get(selectedPopulation);
-
-                    Experiment experiment = new Experiment(population);
-                    experiment.addPopulation(population);
-                    JOptionPane.showMessageDialog(this, "Experimento creado con éxito.");
-                }
-            }
+            new PopulationEvolutionWindow(population).setVisible(true);
         });
 
         // Botón de icono

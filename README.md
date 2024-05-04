@@ -3,8 +3,25 @@ Primera parte de la Práctica Final para la Aplicación para Gestionar Cultivos 
 
 LINK -> https://github.com/nquinbla/PF_GCB_I.git
 
+---------------------------------------------------------------
 
 ## ÍNDICE
+
+- [DESCRIPCIÓN](#descripción)
+- [MÓDULOS](#módulos)
+  - [1. Gestor Cultivos](#1-gestor-cultivos)
+  - [2. Home](#2-home)
+  - [3. Inicio Sesión](#3-inicio-sesión)
+- [ANÁLISIS](#análisis)
+  - [Análisis y descripción de la aplicación](#análisis-y-descripción-de-la-aplicación)
+  - [Listado de fallos y funcionalidades](#listado-de-fallos-y-funcionalidades)
+  - [Listado código](#listado-código)
+  - [Listado pruebas](#listado-pruebas)
+  - [Conclusiones](#conclusiones)
+- [CONSEJOS](#consejos)
+- [SOBRE LA ENTREGA Y EVALUACIÓN DE LA PRÁCTICA](#sobre-la-entrega-y-evaluación-de-la-práctica)
+  - [ITEMS A ENTREGAR](#items-a-entregar)
+ 
 
 ---------------------------------------------------------------
 
@@ -38,6 +55,40 @@ Necesariamente habrá que guardar en modo texto toda la información correspondi
 ---------------------------------------------------------------
 
 ## MÓDULOS
+
+### 1. Gestor Cultivos
+
+
+### 2. Home
+
+
+### 3. Inicio Sesión
+
+
+---------------------------------------------------------------
+
+## ANÁLISIS
+
+### Análisis y descripción de la aplicación
+Análisis y descripción de la aplicación. Este análisis y descripción dará respuesta a las siguientes preguntas:
+o Cómo se han organizado y estructurado las clases y cuál es la responsabilidad de cada una.  o Qué decisiones de diseño se han tomado.  o Qué comprobaciones de integridad (y excepciones) se han implementado.  o Qué técnicas de ordenación y búsqueda ha utilizado y por qué lo ha hecho.  o Diagramas de clases UML.
+
+
+### Listado de fallos y funcionalidades
+Listado de fallos conocidos y funcionalidades definidas en el enunciado que no se han implementado en el código entregado.
+
+
+### Listado código
+Listado de todo el código fuente de la aplicación organizado por paquetes (si aplica) y clases.  
+
+
+### Listado pruebas
+Listado de pruebas unitarias realizadas.  
+
+
+### Conclusiones
+Conclusiones (que incluirán, obligatoriamente, una valoración del tiempo dedicado a la práctica). 
+
 
 ---------------------------------------------------------------
 

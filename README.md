@@ -3,6 +3,11 @@ Primera parte de la Práctica Final para la Aplicación para Gestionar Cultivos 
 
 LINK -> https://github.com/nquinbla/PF_GCB_I.git
 
+**El jar que ha solicitado se encuentra de la siguiente manera**
+```
+out -> artifacts -> PF_GCB_I_jar -> PF_GCB_I_jar
+```
+
 ***
 
 ## ÍNDICE

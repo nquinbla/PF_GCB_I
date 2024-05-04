@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -163,21 +166,46 @@ public class PopulationWindow extends JFrame {
             }
         });
 
-        JButton viewPopulationButton = new JButton("Visualizar Población"); // Botón para ver las poblaciones creadas
+        JButton viewPopulationButton = new JButton("Visualizar Población");
         viewPopulationButton.addActionListener(e -> {
             if (bacteriaPopulations.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No hay poblaciones creadas.");
             } else {
+                // Convertir las claves del mapa a una lista y ordenarla
+                List<String> populationNames = new ArrayList<>(bacteriaPopulations.keySet());
+                Collections.sort(populationNames);
+
+                // Crear la lista de nombres de poblaciones
                 StringBuilder populationsList = new StringBuilder();
-                for (String name : bacteriaPopulations.keySet()) {
+                for (String name : populationNames) {
                     populationsList.append(name).append("\n");
                 }
+
                 JOptionPane.showMessageDialog(this, "Poblaciones creadas:\n" + populationsList.toString());
             }
         });
 
         JButton deletePopulationButton = new JButton("Borrar Población");
-        // deletePopulationButton.addActionListener(...); // Configura la acción aquí
+        deletePopulationButton.addActionListener(e -> {
+            if (bacteriaPopulations.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No hay poblaciones creadas.");
+            } else {
+                // Convertir las claves del mapa a una lista y ordenarla
+                List<String> populationNames = new ArrayList<>(bacteriaPopulations.keySet());
+                Collections.sort(populationNames);
+
+                // Crear un JComboBox con los nombres de las poblaciones
+                JComboBox<String> populationBox = new JComboBox<>(populationNames.toArray(new String[0]));
+
+                int result = JOptionPane.showConfirmDialog(null, populationBox, "Selecciona la población a eliminar",
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (result == JOptionPane.OK_OPTION) {
+                    String selectedPopulation = (String) populationBox.getSelectedItem();
+                    bacteriaPopulations.remove(selectedPopulation);
+                    JOptionPane.showMessageDialog(this, "Población '" + selectedPopulation + "' eliminada con éxito.");
+                }
+            }
+        });
 
         JButton infoPopulationButton = new JButton("Ver Info Población");
         // infoPopulationButton.addActionListener(...); // Configura la acción aquí

@@ -28,8 +28,44 @@ public class PopulationWindow extends JFrame {
     }
 
     private void createComponents() {
+        // Crear un JLayeredPane para permitir la superposición de componentes
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setPreferredSize(new Dimension(800, 400));
+
+        // Crear un JLabel para la imagen de fondo
+        ImageIcon backgroundImageIcon;
+        try {
+            backgroundImageIcon = new ImageIcon("src/main/resources/fondo-laboratorio2.jpg");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Image backgroundImage = backgroundImageIcon.getImage();
+        Image newBackgroundImage = backgroundImage.getScaledInstance(800, 400, Image.SCALE_SMOOTH);
+        backgroundImageIcon = new ImageIcon(newBackgroundImage);
+        JLabel backgroundLabel = new JLabel(backgroundImageIcon);
+        backgroundLabel.setBounds(0, 0, 800, 400);
+
+        // Añadir la imagen de fondo al JLayeredPane
+        layeredPane.add(backgroundLabel, Integer.valueOf(1));
+
+        // Crear el panel principal y añadirlo al JLayeredPane
         JPanel mainPanel = new JPanel(new GridBagLayout());
+        mainPanel.setOpaque(false);
+        mainPanel.setBounds(0, 0, 800, 400);
+        layeredPane.add(mainPanel, Integer.valueOf(2));
+
         GridBagConstraints gbc = new GridBagConstraints();
+
+        // Título
+        JLabel titleLabel = new JLabel("Población Bacteriana", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 42));
+        titleLabel.setForeground(Color.WHITE);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        mainPanel.add(titleLabel, gbc);
 
         // Botones
         JButton createPopulationButton = new JButton("Crear Población");
@@ -51,22 +87,22 @@ public class PopulationWindow extends JFrame {
 
         // Añadir componentes al panel principal
         gbc.gridx = 0;
-        gbc.gridy = 0;
+        gbc.gridy = 1;
         mainPanel.add(createPopulationButton, gbc);
 
-        gbc.gridy = 1;
+        gbc.gridy = 2;
         mainPanel.add(viewPopulationButton, gbc);
 
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         mainPanel.add(deletePopulationButton, gbc);
 
-        gbc.gridy = 3;
+        gbc.gridy = 4;
         mainPanel.add(infoPopulationButton, gbc);
 
-        gbc.gridy = 4;
+        gbc.gridy = 5;
         mainPanel.add(homeButton, gbc);
 
-        add(mainPanel);
+        setContentPane(layeredPane);
     }
 
     public static void main(String[] args) {

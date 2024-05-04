@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PF_GCB_I:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PF_GCB_I_jar</output-path>
+    <root id="archive" name="PF_GCB_I.jar">
+      <element id="module-output" name="PF_GCB_I" />
+    </root>
+  </artifact>
+</component>

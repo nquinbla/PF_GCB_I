@@ -14,6 +14,13 @@ public class FoodDose {
         this.finalFoodAmount = Integer.parseInt(foodDoseParts[3]);
     }
 
+    public FoodDose(int initialFoodAmount, int increaseUntilDay, int foodAmountOnIncreaseDay, int finalFoodAmount) {
+        this.initialFoodAmount = initialFoodAmount;
+        this.increaseUntilDay = increaseUntilDay;
+        this.foodAmountOnIncreaseDay = foodAmountOnIncreaseDay;
+        this.finalFoodAmount = finalFoodAmount;
+    }
+
     // getters and setters
     public int getInitialFoodAmount() {
         return initialFoodAmount;

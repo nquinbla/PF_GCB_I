@@ -87,7 +87,37 @@ public class PopulationWindow extends JFrame {
             JTextField initialCountField = new JTextField();
             JTextField temperatureField = new JTextField();
             JComboBox<String> lightConditionsBox = new JComboBox<>(new String[]{"Alta", "Media", "Baja"});
-            JTextField foodDoseField = new JTextField();
+            JButton foodDoseButton = new JButton("Configurar Dosis de Alimento");
+            FoodDose[] foodDose = new FoodDose[1]; // Usamos un array para poder modificarlo dentro del listener
+
+            foodDoseButton.addActionListener(e1 -> {
+                JTextField initialFoodAmountField = new JTextField();
+                JTextField increaseUntilDayField = new JTextField();
+                JTextField foodAmountOnIncreaseDayField = new JTextField();
+                JTextField finalFoodAmountField = new JTextField();
+
+                JPanel foodDosePanel = new JPanel(new GridLayout(0, 1));
+                foodDosePanel.add(new JLabel("Cantidad inicial de alimento:"));
+                foodDosePanel.add(initialFoodAmountField);
+                foodDosePanel.add(new JLabel("Aumentar hasta el día:"));
+                foodDosePanel.add(increaseUntilDayField);
+                foodDosePanel.add(new JLabel("Cantidad de alimento en el día de aumento:"));
+                foodDosePanel.add(foodAmountOnIncreaseDayField);
+                foodDosePanel.add(new JLabel("Cantidad final de alimento:"));
+                foodDosePanel.add(finalFoodAmountField);
+
+                int result = JOptionPane.showConfirmDialog(null, foodDosePanel, "Configurar Dosis de Alimento",
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (result == JOptionPane.OK_OPTION) {
+                    int initialFoodAmount = Integer.parseInt(initialFoodAmountField.getText());
+                    int increaseUntilDay = Integer.parseInt(increaseUntilDayField.getText());
+                    int foodAmountOnIncreaseDay = Integer.parseInt(foodAmountOnIncreaseDayField.getText());
+                    int finalFoodAmount = Integer.parseInt(finalFoodAmountField.getText());
+
+                    foodDose[0] = new FoodDose(initialFoodAmount, increaseUntilDay, foodAmountOnIncreaseDay, finalFoodAmount);
+                }
+            });
+
             panel.add(new JLabel("Nombre de la especie:"));
             panel.add(nameField);
             panel.add(new JLabel("Fecha de inicio (dd/MM/yyyy):"));
@@ -100,8 +130,7 @@ public class PopulationWindow extends JFrame {
             panel.add(temperatureField);
             panel.add(new JLabel("Condiciones de luz:"));
             panel.add(lightConditionsBox);
-            panel.add(new JLabel("Dosis de alimento:"));
-            panel.add(foodDoseField);
+            panel.add(foodDoseButton);
 
             int result = JOptionPane.showConfirmDialog(null, panel, "Introduce los datos de la población",
                     JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -112,7 +141,11 @@ public class PopulationWindow extends JFrame {
                 int initialCount = Integer.parseInt(initialCountField.getText());
                 double temperature = Double.parseDouble(temperatureField.getText());
                 String lightConditions = (String) lightConditionsBox.getSelectedItem();
-                String foodDose = foodDoseField.getText();
+
+                if (foodDose[0] == null) {
+                    JOptionPane.showMessageDialog(this, "Por favor, configura la dosis de alimento.");
+                    return;
+                }
 
                 BacteriaPopulation newPopulation = new BacteriaPopulation();
                 newPopulation.setName(name);
@@ -121,7 +154,7 @@ public class PopulationWindow extends JFrame {
                 newPopulation.setInitialBacteriaCount(initialCount);
                 newPopulation.setTemperature(temperature);
                 newPopulation.setLightConditions(lightConditions);
-                newPopulation.setFoodDose(new FoodDose(foodDose));
+                newPopulation.setFoodDose(foodDose[0]);
 
                 bacteriaPopulations.put(name, newPopulation);
                 JOptionPane.showMessageDialog(this, "Población '" + name + "' creada con éxito.");

@@ -76,14 +76,20 @@ public class ExperimentWindow extends JFrame {
 
         // Botón de icono
         JButton homeButton = new JButton();
-        // homeButton.setIcon(...); // Configura el icono aquí
+        try {
+            ImageIcon homeIcon = new ImageIcon(getClass().getResource("/icono-home.png"));
+            Image homeImage = homeIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            homeButton.setIcon(new ImageIcon(homeImage));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         homeButton.addActionListener(e -> new Window_Home().setVisible(true));
 
         // Añadir los títulos al JLabel de fondo
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 0, 10, 0); 
+        gbc.insets = new Insets(10, 0, 10, 0);
         background.add(titleLabel, gbc);
 
         gbc.gridy = 1;
@@ -97,9 +103,12 @@ public class ExperimentWindow extends JFrame {
         gbc.gridy = 3;
         background.add(createExperimentButton, gbc);
 
-        gbc.gridy = 4;
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.insets = new Insets(10, 0, 10, 0);
         background.add(homeButton, gbc);
 
+        // Añadir el JLabel de fondo al JFrame
         add(background);
     }
 

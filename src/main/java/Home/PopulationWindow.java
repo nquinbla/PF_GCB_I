@@ -86,7 +86,7 @@ public class PopulationWindow extends JFrame {
             JTextField endDateField = new JTextField();
             JTextField initialCountField = new JTextField();
             JTextField temperatureField = new JTextField();
-            JTextField lightConditionsField = new JTextField();
+            JComboBox<String> lightConditionsBox = new JComboBox<>(new String[]{"Alta", "Media", "Baja"});
             JTextField foodDoseField = new JTextField();
             panel.add(new JLabel("Nombre de la especie:"));
             panel.add(nameField);
@@ -96,10 +96,10 @@ public class PopulationWindow extends JFrame {
             panel.add(endDateField);
             panel.add(new JLabel("Conteo inicial de bacterias:"));
             panel.add(initialCountField);
-            panel.add(new JLabel("Temperatura:"));
+            panel.add(new JLabel("Temperatura (Cº):"));
             panel.add(temperatureField);
             panel.add(new JLabel("Condiciones de luz:"));
-            panel.add(lightConditionsField);
+            panel.add(lightConditionsBox);
             panel.add(new JLabel("Dosis de alimento:"));
             panel.add(foodDoseField);
 
@@ -111,7 +111,7 @@ public class PopulationWindow extends JFrame {
                 String endDate = endDateField.getText();
                 int initialCount = Integer.parseInt(initialCountField.getText());
                 double temperature = Double.parseDouble(temperatureField.getText());
-                String lightConditions = lightConditionsField.getText();
+                String lightConditions = (String) lightConditionsBox.getSelectedItem();
                 String foodDose = foodDoseField.getText();
 
                 BacteriaPopulation newPopulation = new BacteriaPopulation();
@@ -121,7 +121,7 @@ public class PopulationWindow extends JFrame {
                 newPopulation.setInitialBacteriaCount(initialCount);
                 newPopulation.setTemperature(temperature);
                 newPopulation.setLightConditions(lightConditions);
-                newPopulation.setFoodDose(new FoodDose(foodDose)); // Asume que FoodDose tiene un constructor que toma un String
+                newPopulation.setFoodDose(new FoodDose(foodDose));
 
                 bacteriaPopulations.put(name, newPopulation);
                 JOptionPane.showMessageDialog(this, "Población '" + name + "' creada con éxito.");

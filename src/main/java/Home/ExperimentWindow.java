@@ -76,7 +76,8 @@ public class ExperimentWindow extends JFrame {
         add(mainPanel);
     }
 
+    // Método main para probar la ventana
     public static void main(String[] args) {
-        new ExperimentWindow();
+        new ExperimentWindow().setVisible(true);
     }
 }

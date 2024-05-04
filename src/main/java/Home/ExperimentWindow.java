@@ -63,10 +63,17 @@ public class ExperimentWindow extends JFrame {
             int returnValue = fileChooser.showOpenDialog(null);
             if (returnValue == JFileChooser.APPROVE_OPTION) {
                 File selectedFile = fileChooser.getSelectedFile();
-                try {
-                    Desktop.getDesktop().open(selectedFile);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
+                String fileName = selectedFile.getName();
+                String fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1);
+
+                if (!fileExtension.equalsIgnoreCase("txt")) {
+                    JOptionPane.showMessageDialog(this, "Solo se permiten archivos .txt", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    try {
+                        Desktop.getDesktop().open(selectedFile);
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
                 }
             }
         });

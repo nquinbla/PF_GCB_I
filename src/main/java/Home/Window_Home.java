@@ -58,8 +58,11 @@ public class Window_Home extends JFrame {
         // Título y subtítulo
         JLabel titleLabel = new JLabel("Gestor de Experimentos", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 42));
+        titleLabel.setForeground(Color.WHITE);
+
         JLabel subtitleLabel = new JLabel("<html><body>Laboratorios biologicos <font color='blue'>UAX</font></body></html>", SwingConstants.CENTER);
         subtitleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        subtitleLabel.setForeground(Color.LIGHT_GRAY);
 
         // Botones
         JButton experimentButton = new JButton("Experimento");

@@ -8,7 +8,7 @@ import java.awt.event.WindowEvent;
 public class PopulationWindow extends JFrame {
 
     public PopulationWindow() {
-        setTitle("Population Window");
+        setTitle("Gestor de Experimentos: Población Bacteriana");
         setSize(800, 400);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -67,5 +67,9 @@ public class PopulationWindow extends JFrame {
         mainPanel.add(homeButton, gbc);
 
         add(mainPanel);
+    }
+
+    public static void main(String[] args) {
+        new PopulationWindow().setVisible(true);
     }
 }

@@ -91,23 +91,7 @@ public class ExperimentWindow extends JFrame {
 
         JButton createExperimentButton = new JButton("Crear Experimento");
         createExperimentButton.addActionListener(e -> {
-            // Crear un cuadro de diálogo para recoger los detalles de la población bacteriana
-            String populationName = JOptionPane.showInputDialog(this, "Introduce el nombre de la población bacteriana:");
-            if (populationName != null && !populationName.isEmpty()) {
-                // Crear una nueva población bacteriana
-                BacteriaPopulation population = new BacteriaPopulation();
-                // Añadir la población bacteriana al mapa
-                bacteriaPopulations.put(populationName, population);
-                // Crear un nuevo experimento con la población bacteriana
-                Experiment experiment = new Experiment();
-                experiment.addPopulation(population);
-                JOptionPane.showMessageDialog(this, "Experimento creado con éxito.");
-                // Actualizar populationBox
-                populationBox.addItem(populationName);
-                new PopulationEvolutionWindow(population).setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "El nombre de la población bacteriana no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            new SelectPopulationWindow(bacteriaPopulations).setVisible(true);
         });
 
         // Botón de icono

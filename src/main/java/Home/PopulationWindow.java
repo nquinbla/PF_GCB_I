@@ -1,11 +1,18 @@
 package Home;
 
+import GestorCultivos.BacteriaPopulation;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PopulationWindow extends JFrame {
+
+    // Mapa para almacenar las poblaciones de bacterias
+    private Map<String, BacteriaPopulation> bacteriaPopulations = new HashMap<>();
 
     public PopulationWindow() {
         setTitle("Gestor de Experimentos: Población Bacteriana");
@@ -68,8 +75,22 @@ public class PopulationWindow extends JFrame {
         mainPanel.add(titleLabel, gbc);
 
         // Botones
-        JButton createPopulationButton = new JButton("Crear Población");
-        // createPopulationButton.addActionListener(...); // Configura la acción aquí
+
+        JButton createPopulationButton = new JButton("Crear Población"); // botón para crear una nueva población
+        createPopulationButton.addActionListener(e -> {
+            String populationName = JOptionPane.showInputDialog(this, "Introduce el nombre de la nueva población:");
+            if (populationName != null && !populationName.trim().isEmpty()) {
+                if (bacteriaPopulations.containsKey(populationName)) {
+                    JOptionPane.showMessageDialog(this, "Ya existe una población con ese nombre. Por favor, elige otro nombre.");
+                } else {
+                    BacteriaPopulation newPopulation = new BacteriaPopulation();
+                    bacteriaPopulations.put(populationName, newPopulation);
+                    JOptionPane.showMessageDialog(this, "Población '" + populationName + "' creada con éxito.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "El nombre de la población no puede estar vacío.");
+            }
+        });
 
         JButton viewPopulationButton = new JButton("Visualizar Población");
         // viewPopulationButton.addActionListener(...); // Configura la acción aquí

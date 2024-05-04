@@ -152,6 +152,7 @@ public class PopulationWindow extends JFrame {
                 }
 
                 BacteriaPopulation newPopulation = new BacteriaPopulation();
+                SharedData.getBacteriaPopulations().put("Nueva Población", newPopulation);
                 newPopulation.setName(name);
                 newPopulation.setStartDate(startDate);
                 newPopulation.setEndDate(endDate);

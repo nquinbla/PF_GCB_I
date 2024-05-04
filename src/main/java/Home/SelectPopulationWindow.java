@@ -47,4 +47,22 @@ public class SelectPopulationWindow extends JFrame {
         panel.add(confirmButton);
         add(panel, BorderLayout.CENTER);
     }
+
+    @Override
+    public void setVisible(boolean b) {
+        super.setVisible(b);
+        if (b) {
+            updatePopulationBox();
+        }
+    }
+
+    private void updatePopulationBox() {
+        // Limpiar el JComboBox
+        populationBox.removeAllItems();
+
+        // Añadir las poblaciones bacterianas al JComboBox
+        for (String populationName : SharedData.getBacteriaPopulations().keySet()) {
+            populationBox.addItem(populationName);
+        }
+    }
 }

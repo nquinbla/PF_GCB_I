@@ -60,7 +60,7 @@ public class ExperimentWindow extends JFrame {
         subtitleLabel.setForeground(Color.LIGHT_GRAY);
 
         // Botones
-        JButton openExperimentButton = new JButton("Abrir Experimento");
+        JButton openExperimentButton = new JButton("Abrir Experimento"); // Botón para abrir un experimento
         openExperimentButton.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -86,7 +86,7 @@ public class ExperimentWindow extends JFrame {
             }
         });
 
-        JButton createExperimentButton = new JButton("Crear Experimento");
+        JButton createExperimentButton = new JButton("Crear Experimento"); // Botón para crear un experimento
         createExperimentButton.addActionListener(e -> {
             // Obtener las poblaciones creadas
             Map<String, BacteriaPopulation> bacteriaPopulations = PopulationManager.getInstance().getPopulations();
@@ -107,10 +107,9 @@ public class ExperimentWindow extends JFrame {
                     String selectedPopulation = (String) populationBox.getSelectedItem();
                     BacteriaPopulation population = bacteriaPopulations.get(selectedPopulation);
 
-                    // Aquí puedes usar la población seleccionada para crear el experimento
-                    // Por ejemplo:
                     Experiment experiment = new Experiment(population);
-                    // ...
+                    experiment.addPopulation(population);
+                    JOptionPane.showMessageDialog(this, "Experimento creado con éxito.");
                 }
             }
         });

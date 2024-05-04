@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ExperimentWindow extends JFrame {
 
     public ExperimentWindow() {
-        setTitle("Experiment Window");
+        setTitle("Gestor de Experimentos: Experimento");
         setSize(800, 400);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -41,6 +41,16 @@ public class ExperimentWindow extends JFrame {
         };
         background.setLayout(new GridBagLayout());
 
+        // Título
+        JLabel titleLabel = new JLabel("Experimentos");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setForeground(Color.WHITE);
+
+        // Subtítulo
+        JLabel subtitleLabel = new JLabel("Con bacterias");
+        subtitleLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        subtitleLabel.setForeground(Color.WHITE);
+
         // Botones
         JButton openExperimentButton = new JButton("Abrir Experimento");
         openExperimentButton.addActionListener(e -> {
@@ -69,16 +79,24 @@ public class ExperimentWindow extends JFrame {
         // homeButton.setIcon(...); // Configura el icono aquí
         homeButton.addActionListener(e -> new Window_Home().setVisible(true));
 
-        // Añadir componentes al JLabel de fondo
+        // Añadir los títulos al JLabel de fondo
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        background.add(openExperimentButton, gbc);
+        gbc.insets = new Insets(10, 0, 10, 0); // Añade un margen superior e inferior de 10
+        background.add(titleLabel, gbc);
 
         gbc.gridy = 1;
+        background.add(subtitleLabel, gbc);
+
+        // Añadir los botones
+        gbc.gridy = 2;
+        background.add(openExperimentButton, gbc);
+
+        gbc.gridy = 3;
         background.add(createExperimentButton, gbc);
 
-        gbc.gridy = 2;
+        gbc.gridy = 4;
         background.add(homeButton, gbc);
 
         add(background);

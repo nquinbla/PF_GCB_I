@@ -88,6 +88,7 @@ public class PopulationWindow extends JFrame {
         // Añadir componentes al panel principal
         gbc.gridx = 0;
         gbc.gridy = 1;
+        gbc.insets = new Insets(10, 0, 10, 0);
         mainPanel.add(createPopulationButton, gbc);
 
         gbc.gridy = 2;

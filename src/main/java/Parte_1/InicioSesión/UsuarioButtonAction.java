@@ -1,4 +1,4 @@
-package InicioSesión;
+package Parte_1.InicioSesión;
 
 import javax.swing.*;
 import java.awt.BorderLayout;

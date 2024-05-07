@@ -1,4 +1,4 @@
-package InicioSesión;
+package Parte_1.InicioSesión;
 
 public class Contraseña {
     private String contraseña;

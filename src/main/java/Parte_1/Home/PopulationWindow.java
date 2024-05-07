@@ -1,8 +1,8 @@
-package Home;
+package Parte_1.Home;
 
-import GestorCultivos.BacteriaPopulation;
-import GestorCultivos.FoodDose;
-import GestorCultivos.PopulationManager;
+import Parte_1.GestorCultivos.BacteriaPopulation;
+import Parte_1.GestorCultivos.FoodDose;
+import Parte_1.GestorCultivos.PopulationManager;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package GestorCultivos;
+package Parte_1.GestorCultivos;
 
 public class FoodDose {
     private int initialFoodAmount;

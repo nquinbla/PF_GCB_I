@@ -1,7 +1,6 @@
-package Home;
+package Parte_1.Home;
 
-import GestorCultivos.BacteriaPopulation;
-import GestorCultivos.Experiment;
+import Parte_1.GestorCultivos.BacteriaPopulation;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;

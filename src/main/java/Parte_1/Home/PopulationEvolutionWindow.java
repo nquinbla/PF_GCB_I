@@ -1,9 +1,8 @@
-package Home;
+package Parte_1.Home;
 
-import GestorCultivos.BacteriaPopulation;
+import Parte_1.GestorCultivos.BacteriaPopulation;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;

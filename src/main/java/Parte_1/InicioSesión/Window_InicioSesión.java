@@ -1,18 +1,13 @@
-package InicioSesión;
+package Parte_1.InicioSesión;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 
-import Home.Window_Home;
+import Parte_1.Home.Window_Home;
 
 public class Window_InicioSesión extends JFrame {
 

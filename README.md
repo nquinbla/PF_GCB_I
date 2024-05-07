@@ -8,8 +8,8 @@ LINK -> https://github.com/nquinbla/PF_GCB_I.git
 out -> artifacts -> PF_GCB_I_jar -> PF_GCB_I_jar
 ```
 
-- [Práctica Final: Aplicación para Gestionar Cultivos de Bacterias I](#práctica-final-aplicación-para-gestionar-cultivos-de-bacterias-i)
-- [Práctica Final: Aplicación para Gestionar Cultivos de Bacterias II](#práctica-final-aplicación-para-gestionar-cultivos-de-bacterias-ii)
+- [PRÁCTICA FINAL: APLICACIÓN PARA GESTIONAR CULTIVOS DE BACTERIAS I](#práctica-final-aplicación-para-gestionar-cultivos-de-bacterias-i)
+- [PRÁCTICA FINAL: APLICACIÓN PARA GESTIONAR CULTIVOS DE BACTERIAS II](#práctica-final-aplicación-para-gestionar-cultivos-de-bacterias-ii)
 
 
 ***

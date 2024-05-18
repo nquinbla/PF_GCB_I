@@ -17,7 +17,7 @@ public class BacteriaPopulation {
         this.plate = new Cell[20][20];
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
-                this.plate[i][j] = new Cell(0, 0);
+                this.plate[i][j] = new Cell(0,0,30);
             }
         }
     }

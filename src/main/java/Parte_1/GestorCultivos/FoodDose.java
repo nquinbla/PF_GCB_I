@@ -85,5 +85,4 @@ public class FoodDose {
         this.foodAmountOnIncreaseDay = this.initialFoodAmount;
         this.finalFoodAmount = this.initialFoodAmount;
     }
-
 }

@@ -28,7 +28,8 @@ public class Cell {
         this.foodAmount = foodAmount;
     }
 
-    public void simulateDay(Cell[][] plate, int currentX, int currentY) {
+    public void simulateDay(Cell[][] plate, int currentX, int currentY, int foodPerCell) {
+        distributeFood(foodPerCell);
         Random random = new Random();
         for (int i = 0; i < bacteriaCount; i++) {
             foodConsumed = 0; // reset the food consumed for the day
@@ -62,6 +63,10 @@ public class Cell {
             }
             reproduceBacteria(); // reproduce at the end of the day
         }
+    }
+
+    private void distributeFood(int foodPerCell) {
+        this.foodAmount = foodPerCell;
     }
 
     private void reproduceBacteria() {

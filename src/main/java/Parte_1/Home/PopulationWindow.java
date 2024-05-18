@@ -141,8 +141,9 @@ public class PopulationWindow extends JFrame {
                             foodDose[0].setAlternatingDose(dose);
                         }
                         break;
-                    default:
+                    case "Patrón actual":
                         // Aquí puedes manejar el caso del patrón de suministro de comida actual
+                        JOptionPane.showMessageDialog(this, "Patrón de suministro de comida actual no implementado.");
                         break;
                 }
             });

@@ -1,10 +1,12 @@
 package Parte_1.GestorCultivos;
 
 public class FoodDose {
+    private static final int MAX_FOOD_AMOUNT = 300000;
     private int initialFoodAmount;
     private int increaseUntilDay;
     private int foodAmountOnIncreaseDay;
     private int finalFoodAmount;
+    private int currentDay = 0;
 
     public FoodDose(String foodDose) {
         String[] foodDoseParts = foodDose.split(",");
@@ -52,6 +54,36 @@ public class FoodDose {
 
     public void setFinalFoodAmount(int finalFoodAmount) {
         this.finalFoodAmount = finalFoodAmount;
+    }
+
+    public int getNextDose() {
+        currentDay++;
+        if (currentDay <= increaseUntilDay) {
+            return initialFoodAmount + (foodAmountOnIncreaseDay - initialFoodAmount) * currentDay / increaseUntilDay;
+        } else {
+            return foodAmountOnIncreaseDay + (finalFoodAmount - foodAmountOnIncreaseDay) * (currentDay - increaseUntilDay) / (100 - increaseUntilDay);
+        }
+    }
+
+    public void setConstantDose(int dose) {
+        this.initialFoodAmount = dose;
+        this.increaseUntilDay = 0;
+        this.foodAmountOnIncreaseDay = dose;
+        this.finalFoodAmount = dose;
+    }
+
+    public void setLinearIncreasingDose(int initialDose, int finalDose) {
+        this.initialFoodAmount = initialDose;
+        this.increaseUntilDay = 100;
+        this.foodAmountOnIncreaseDay = finalDose;
+        this.finalFoodAmount = finalDose;
+    }
+
+    public void setAlternatingDose(int dose) {
+        this.initialFoodAmount = (currentDay % 2 == 0) ? dose : 0;
+        this.increaseUntilDay = 0;
+        this.foodAmountOnIncreaseDay = this.initialFoodAmount;
+        this.finalFoodAmount = this.initialFoodAmount;
     }
 
 }

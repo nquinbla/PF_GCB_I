@@ -22,25 +22,6 @@ public class BacteriaPopulation {
         }
     }
 
-    public int getInitialBacteriaCount() {
-        int totalBacteriaCount = 0;
-        for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < 20; j++) {
-                totalBacteriaCount += this.plate[i][j].getBacteriaCount();
-            }
-        }
-        return totalBacteriaCount;
-    }
-    public void setInitialBacteriaCount(int initialCount) {
-        int bacteriaPerCell = initialCount / 16; // As the bacteria are initially in the 4x4 center of the plate
-        for (int i = 8; i < 12; i++) {
-            for (int j = 8; j < 12; j++) {
-                this.plate[i][j].setBacteriaCount(bacteriaPerCell);
-            }
-        }
-    }
-
-
     // getters and setters
     public String getName() {
         return name;
@@ -113,5 +94,22 @@ public class BacteriaPopulation {
             }
         }
         return totalBacteriaCount;
+    }
+    public int getInitialBacteriaCount() {
+        int totalBacteriaCount = 0;
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                totalBacteriaCount += this.plate[i][j].getBacteriaCount();
+            }
+        }
+        return totalBacteriaCount;
+    }
+    public void setInitialBacteriaCount(int initialCount) {
+        int bacteriaPerCell = initialCount / 16; // As the bacteria are initially in the 4x4 center of the plate
+        for (int i = 8; i < 12; i++) {
+            for (int j = 8; j < 12; j++) {
+                this.plate[i][j].setBacteriaCount(bacteriaPerCell);
+            }
+        }
     }
 }

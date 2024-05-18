@@ -8,8 +8,8 @@ LINK -> https://github.com/nquinbla/PF_GCB_I.git
 out -> artifacts -> PF_GCB_I_jar -> PF_GCB_I_jar
 ```
 
-- [Práctica Final: Aplicación para Gestionar Cultivos de Bacterias I](#práctica-final-aplicación-para-gestionar-cultivos-de-bacterias-i)
-- [Práctica Final: Aplicación para Gestionar Cultivos de Bacterias II](#práctica-final-aplicación-para-gestionar-cultivos-de-bacterias-ii)
+- [PRÁCTICA FINAL: APLICACIÓN PARA GESTIONAR CULTIVOS DE BACTERIAS I](#práctica-final-aplicación-para-gestionar-cultivos-de-bacterias-i)
+- [PRÁCTICA FINAL: APLICACIÓN PARA GESTIONAR CULTIVOS DE BACTERIAS II](#práctica-final-aplicación-para-gestionar-cultivos-de-bacterias-ii)
 
 
 ***
@@ -189,11 +189,10 @@ A continuación, comenzaremos a simular qué pasa ese día con cada una de las b
 
     c. si el número es mayor o igual que 20 y menor que 100, la bacteria se mueve a una celda contigua a la celda en la que está según se indica en la tabla; excepto si dicha celda está fuera del plato; en ese caso se queda donde está.
 
- | 65 <=N <70 | 65 <=N < 70 | 70 <=N < 75 |
+ | 20 <=N < 30 | 30 <=N <40 | 40 / <=N < 50 |
 | --------- | --------- | --------- |
-| 75 <=N <80 | N < 3 se muere 3 <=N < 60 se queda en esta celda | 80 <=N < 85 |
-| 85 <=N <90 | 90 <=N < 95 | 95 <= n < 100 |
-20 <=N < 30
+| 50 / <=N <60 | N < 6 se muere 6 <=N < 20 se queda en esta celda | 60 / <=N < 70 |
+| 70 <=N <80 | 80 <=N < 90 | 90 <= n < 100 |
 
 
   3. Si la bacteria se encuentra en una celda donde hay 9 microgramos o menos de comida, la bacteria genera un numero aleatorio entre 0 y 100; si
@@ -204,9 +203,9 @@ A continuación, comenzaremos a simular qué pasa ese día con cada una de las b
 
     c. si el número es mayor o igual que 60 y menor que 100, la bacteria se mueve a una celda contigua a la celda en la que está según se indica en la tabla; excepto si dicha celda está fuera del plato; en ese caso se queda donde está.
 
- | 65 <=N <70 | 65 <=N < 70 | 70 <=N < 75 |
+ | 65 <=N <65 | 65 <=N < 70 | 70 <=N < 75 |
 | --------- | --------- | --------- |
-| 75 <=N <80 | N < 3 se muere 3 <=N < 60 se queda en esta celda | 80 <=N < 85 |
+| 75 <=N <80 | N < 20 se muere 20 <=N < 60 se queda en esta celda | 80 <=N < 85 |
 | 85 <=N <90 | 90 <=N < 95 | 95 <= n < 100 |
 
 

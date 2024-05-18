@@ -6,10 +6,12 @@ public class Cell {
     private int bacteriaCount;
     private int foodAmount;
     private int foodConsumed;
+    private int[][][] bacteriaAndFoodData; // 3D array to store the number of bacteria and remaining food per day and cell
 
-    public Cell(int bacteriaCount, int foodAmount) {
+    public Cell(int bacteriaCount, int foodAmount, int days) {
         this.bacteriaCount = bacteriaCount;
         this.foodAmount = foodAmount;
+        this.bacteriaAndFoodData = new int[days][2][2]; // Initialize the 3D array
     }
 
     public int getBacteriaCount() {
@@ -28,41 +30,23 @@ public class Cell {
         this.foodAmount = foodAmount;
     }
 
-    public void simulateDay(Cell[][] plate, int currentX, int currentY, int foodPerCell) {
+    public void simulateDay(Cell[][] plate, int currentX, int currentY, int foodPerCell, int day) {
         distributeFood(foodPerCell);
         Random random = new Random();
         for (int i = 0; i < bacteriaCount; i++) {
             foodConsumed = 0; // reset the food consumed for the day
-            for (int j = 0; j < 10; j++) { // repeat 10 times a day
-                if (foodAmount >= 100) {
-                    foodAmount -= 20;
-                    foodConsumed += 20;
-                    int randomNumber = random.nextInt(100);
-                    if (randomNumber < 3) {
-                        bacteriaCount--;
-                    } else if (randomNumber >= 60) {
-                        moveBacteria(plate, currentX, currentY);
-                    }
-                } else if (foodAmount >= 10) {
-                    foodAmount -= 10;
-                    foodConsumed += 10;
-                    int randomNumber = random.nextInt(100);
-                    if (randomNumber < 6) {
-                        bacteriaCount--;
-                    } else if (randomNumber >= 20) {
-                        moveBacteria(plate, currentX, currentY);
-                    }
-                } else {
-                    int randomNumber = random.nextInt(100);
-                    if (randomNumber < 20) {
-                        bacteriaCount--;
-                    } else if (randomNumber >= 60) {
-                        moveBacteria(plate, currentX, currentY);
-                    }
-                }
-            }
-            reproduceBacteria(); // reproduce at the end of the day
+            // existing code...
+
+            // Save the number of bacteria and remaining food at the end of the day
+            bacteriaAndFoodData[day][0][0] = bacteriaCount;
+            bacteriaAndFoodData[day][0][1] = foodAmount;
         }
+    }
+
+    // existing methods...
+
+    public int getBacteriaCountForDay(int day) {
+        return bacteriaAndFoodData[day][0][0];
     }
 
     private void distributeFood(int foodPerCell) {

@@ -98,7 +98,7 @@ public class PopulationWindow extends JFrame {
             foodDoseButton.addActionListener(e1 -> {
                 String selectedPattern = (String) foodDosePatternBox.getSelectedItem();
                 switch (selectedPattern) {
-                    case "Cantidad constante":
+                    case "Cantidad constante": // Cantidad constante
                         JTextField constantDoseField = new JTextField();
                         JPanel constantDosePanel = new JPanel(new GridLayout(0, 1));
                         constantDosePanel.add(new JLabel("Cantidad de alimento:"));
@@ -106,12 +106,16 @@ public class PopulationWindow extends JFrame {
                         int result = JOptionPane.showConfirmDialog(null, constantDosePanel, "Configurar Dosis de Alimento",
                                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
                         if (result == JOptionPane.OK_OPTION) {
-                            int dose = Integer.parseInt(constantDoseField.getText());
-                            foodDose[0] = new FoodDose();
-                            foodDose[0].setConstantDose(dose);
+                            if (constantDoseField.getText().isEmpty()) {
+                                JOptionPane.showMessageDialog(this, "Por favor, introduce una cantidad de alimento.");
+                            } else {
+                                int dose = Integer.parseInt(constantDoseField.getText());
+                                foodDose[0] = new FoodDose();
+                                foodDose[0].setConstantDose(dose);
+                            }
                         }
                         break;
-                    case "Incremento lineal":
+                    case "Incremento lineal": // Incremento lineal
                         JTextField initialDoseField = new JTextField();
                         JTextField finalDoseField = new JTextField();
                         JPanel linearDosePanel = new JPanel(new GridLayout(0, 1));
@@ -122,13 +126,17 @@ public class PopulationWindow extends JFrame {
                         result = JOptionPane.showConfirmDialog(null, linearDosePanel, "Configurar Dosis de Alimento",
                                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
                         if (result == JOptionPane.OK_OPTION) {
-                            int initialDose = Integer.parseInt(initialDoseField.getText());
-                            int finalDose = Integer.parseInt(finalDoseField.getText());
-                            foodDose[0] = new FoodDose();
-                            foodDose[0].setLinearIncreasingDose(initialDose, finalDose);
+                            if (initialDoseField.getText().isEmpty() || finalDoseField.getText().isEmpty()) {
+                                JOptionPane.showMessageDialog(this, "Por favor, introduce las dosis inicial y final.");
+                            } else {
+                                int initialDose = Integer.parseInt(initialDoseField.getText());
+                                int finalDose = Integer.parseInt(finalDoseField.getText());
+                                foodDose[0] = new FoodDose();
+                                foodDose[0].setLinearIncreasingDose(initialDose, finalDose);
+                            }
                         }
                         break;
-                    case "Alternancia diaria":
+                    case "Alternancia diaria": // Alternancia diaria
                         JTextField alternatingDoseField = new JTextField();
                         JPanel alternatingDosePanel = new JPanel(new GridLayout(0, 1));
                         alternatingDosePanel.add(new JLabel("Cantidad de alimento:"));
@@ -136,13 +144,16 @@ public class PopulationWindow extends JFrame {
                         result = JOptionPane.showConfirmDialog(null, alternatingDosePanel, "Configurar Dosis de Alimento",
                                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
                         if (result == JOptionPane.OK_OPTION) {
-                            int dose = Integer.parseInt(alternatingDoseField.getText());
-                            foodDose[0] = new FoodDose();
-                            foodDose[0].setAlternatingDose(dose);
+                            if (alternatingDoseField.getText().isEmpty()) {
+                                JOptionPane.showMessageDialog(this, "Por favor, introduce una cantidad de alimento.");
+                            } else {
+                                int dose = Integer.parseInt(alternatingDoseField.getText());
+                                foodDose[0] = new FoodDose();
+                                foodDose[0].setAlternatingDose(dose);
+                            }
                         }
                         break;
                     case "Patrón actual":
-                        // Aquí puedes manejar el caso del patrón de suministro de comida actual
                         JOptionPane.showMessageDialog(this, "Patrón de suministro de comida actual no implementado.");
                         break;
                 }

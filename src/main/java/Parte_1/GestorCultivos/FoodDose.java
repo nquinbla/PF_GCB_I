@@ -1,34 +1,13 @@
 package Parte_1.GestorCultivos;
 
+import Parte_2.GestorCeldas.Cell;
+
 public class FoodDose {
-    private static final int MAX_FOOD_AMOUNT = 300000;
     private int initialFoodAmount;
     private int increaseUntilDay;
     private int foodAmountOnIncreaseDay;
     private int finalFoodAmount;
     private int currentDay = 0;
-
-    public FoodDose() {
-        this.initialFoodAmount = 0;
-        this.increaseUntilDay = 0;
-        this.foodAmountOnIncreaseDay = 0;
-        this.finalFoodAmount = 0;
-    }
-
-    public FoodDose(String foodDose) {
-        String[] foodDoseParts = foodDose.split(",");
-        this.initialFoodAmount = Integer.parseInt(foodDoseParts[0]);
-        this.increaseUntilDay = Integer.parseInt(foodDoseParts[1]);
-        this.foodAmountOnIncreaseDay = Integer.parseInt(foodDoseParts[2]);
-        this.finalFoodAmount = Integer.parseInt(foodDoseParts[3]);
-    }
-
-    public FoodDose(int initialFoodAmount, int increaseUntilDay, int foodAmountOnIncreaseDay, int finalFoodAmount) {
-        this.initialFoodAmount = initialFoodAmount;
-        this.increaseUntilDay = increaseUntilDay;
-        this.foodAmountOnIncreaseDay = foodAmountOnIncreaseDay;
-        this.finalFoodAmount = finalFoodAmount;
-    }
 
     // getters and setters
     public int getInitialFoodAmount() {
@@ -61,6 +40,15 @@ public class FoodDose {
 
     public void setFinalFoodAmount(int finalFoodAmount) {
         this.finalFoodAmount = finalFoodAmount;
+    }
+
+    public void distributeFood(BacteriaPopulation population) {
+        Cell[][] plate = population.getPlate();
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                plate[i][j].setFoodAmount(this.initialFoodAmount);
+            }
+        }
     }
 
     public int getNextDose() {

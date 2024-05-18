@@ -208,26 +208,45 @@ public class PopulationWindow extends JFrame {
             }
         });
 
-        JButton viewPopulationButton = new JButton("Visualizar Población");
+        JButton viewPopulationButton = new JButton("Ver Poblaciones"); // Botón para ver las poblaciones
         viewPopulationButton.addActionListener(e -> {
             if (bacteriaPopulations.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No hay poblaciones creadas.");
             } else {
-                // Convertir las claves del mapa a una lista y ordenarla
-                List<String> populationNames = new ArrayList<>(bacteriaPopulations.keySet());
-                Collections.sort(populationNames);
+                // Crear un JComboBox con los criterios de ordenación
+                JComboBox<String> sortCriteriaBox = new JComboBox<>(new String[]{"Fecha de inicio", "Nombre", "Número de bacterias"});
 
-                // Crear la lista de nombres de poblaciones
-                StringBuilder populationsList = new StringBuilder();
-                for (String name : populationNames) {
-                    populationsList.append(name).append("\n");
+                int result = JOptionPane.showConfirmDialog(null, sortCriteriaBox, "Selecciona el criterio de ordenación",
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (result == JOptionPane.OK_OPTION) {
+                    String selectedCriteria = (String) sortCriteriaBox.getSelectedItem();
+                    List<BacteriaPopulation> sortedPopulations;
+                    switch (selectedCriteria) {
+                        case "Fecha de inicio":
+                            sortedPopulations = PopulationManager.getInstance().getPopulationsSortedByStartDate();
+                            break;
+                        case "Nombre":
+                            sortedPopulations = PopulationManager.getInstance().getPopulationsSortedByName();
+                            break;
+                        case "Número de bacterias":
+                            sortedPopulations = PopulationManager.getInstance().getPopulationsSortedByBacteriaCount();
+                            break;
+                        default:
+                            return;
+                    }
+
+                    // Crear la lista de nombres de poblaciones
+                    StringBuilder populationsList = new StringBuilder();
+                    for (BacteriaPopulation population : sortedPopulations) {
+                        populationsList.append(population.getName()).append("\n");
+                    }
+
+                    JOptionPane.showMessageDialog(this, "Poblaciones ordenadas por " + selectedCriteria + ":\n" + populationsList.toString());
                 }
-
-                JOptionPane.showMessageDialog(this, "Poblaciones creadas:\n" + populationsList.toString());
             }
         });
 
-        JButton deletePopulationButton = new JButton("Borrar Población");
+        JButton deletePopulationButton = new JButton("Borrar Población"); // Botón para borrar una población
         deletePopulationButton.addActionListener(e -> {
             if (bacteriaPopulations.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No hay poblaciones creadas.");

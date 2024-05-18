@@ -8,6 +8,13 @@ public class FoodDose {
     private int finalFoodAmount;
     private int currentDay = 0;
 
+    public FoodDose() {
+        this.initialFoodAmount = 0;
+        this.increaseUntilDay = 0;
+        this.foodAmountOnIncreaseDay = 0;
+        this.finalFoodAmount = 0;
+    }
+
     public FoodDose(String foodDose) {
         String[] foodDoseParts = foodDose.split(",");
         this.initialFoodAmount = Integer.parseInt(foodDoseParts[0]);

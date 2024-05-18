@@ -1,15 +1,26 @@
 package Parte_1.GestorCultivos;
 
+import Parte_2.GestorCeldas.Cell;
+
 import java.util.Date;
 
 public class BacteriaPopulation {
     private String name;
     private Date startDate;
     private Date endDate;
-    private int initialBacteriaCount;
+    private Cell[][] plate;
     private double temperature;
     private String lightConditions;
     private FoodDose foodDose;
+
+    public BacteriaPopulation() {
+        this.plate = new Cell[20][20];
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                this.plate[i][j] = new Cell(0, 0);
+            }
+        }
+    }
 
     // getters and setters
     public String getName() {
@@ -36,12 +47,12 @@ public class BacteriaPopulation {
         this.endDate = endDate;
     }
 
-    public int getInitialBacteriaCount() {
-        return initialBacteriaCount;
+    public Cell[][] getPlate() {
+        return plate;
     }
 
-    public void setInitialBacteriaCount(int initialBacteriaCount) {
-        this.initialBacteriaCount = initialBacteriaCount;
+    public void setPlate(Cell[][] plate) {
+        this.plate = plate;
     }
 
     public double getTemperature() {
@@ -76,6 +87,12 @@ public class BacteriaPopulation {
         if (day < 0 || day > 30) {
             throw new IllegalArgumentException("El día debe estar en el rango de 0 a 30");
         }
-        return initialBacteriaCount * (int) Math.pow(2, day);
+        int totalBacteriaCount = 0;
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                totalBacteriaCount += this.plate[i][j].getBacteriaCount();
+            }
+        }
+        return totalBacteriaCount;
     }
 }

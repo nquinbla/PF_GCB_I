@@ -72,15 +72,10 @@ public class Window_Home extends JFrame {
         JButton experimentButton = new JButton("Experimento");
         experimentButton.addActionListener(e -> {
             Map<String, BacteriaPopulation> bacteriaPopulations = new HashMap<>();
-            // Aquí puedes añadir poblaciones de bacterias a bacteriaPopulations
-            // Por ejemplo:
-            // bacteriaPopulations.put("Population1", new BacteriaPopulation());
-            // bacteriaPopulations.put("Population2", new BacteriaPopulation());
             new ExperimentWindow(bacteriaPopulations).setVisible(true);
         });
 
         JButton bacteriaButton = new JButton("Poblaciones Bacterianas");
-        // bacteriaButton.setIcon(...); // Configura el icono aquí
         bacteriaButton.addActionListener(e -> new PopulationWindow().setVisible(true));
 
         // Botones de icono

@@ -5,6 +5,7 @@ import java.util.Random;
 public class Cell {
     private int bacteriaCount;
     private int foodAmount;
+    private int foodConsumed;
 
     public Cell(int bacteriaCount, int foodAmount) {
         this.bacteriaCount = bacteriaCount;
@@ -30,9 +31,11 @@ public class Cell {
     public void simulateDay(Cell[][] plate, int currentX, int currentY) {
         Random random = new Random();
         for (int i = 0; i < bacteriaCount; i++) {
+            foodConsumed = 0; // reset the food consumed for the day
             for (int j = 0; j < 10; j++) { // repeat 10 times a day
                 if (foodAmount >= 100) {
                     foodAmount -= 20;
+                    foodConsumed += 20;
                     int randomNumber = random.nextInt(100);
                     if (randomNumber < 3) {
                         bacteriaCount--;
@@ -41,6 +44,7 @@ public class Cell {
                     }
                 } else if (foodAmount >= 10) {
                     foodAmount -= 10;
+                    foodConsumed += 10;
                     int randomNumber = random.nextInt(100);
                     if (randomNumber < 6) {
                         bacteriaCount--;
@@ -56,6 +60,17 @@ public class Cell {
                     }
                 }
             }
+            reproduceBacteria(); // reproduce at the end of the day
+        }
+    }
+
+    private void reproduceBacteria() {
+        if (foodConsumed >= 150) {
+            bacteriaCount += 3;
+        } else if (foodConsumed >= 100) {
+            bacteriaCount += 2;
+        } else if (foodConsumed >= 50) {
+            bacteriaCount += 1;
         }
     }
 
@@ -82,7 +97,7 @@ public class Cell {
         }
 
         // Check if the new position is within the plate
-        if (newX >= 0 && newX < 20 && newY >= 0 && newY < 20) {
+        if (newX >= 0 && newX < plate.length && newY >= 0 && newY < plate[0].length) {
             // Move the bacteria to the new cell
             this.bacteriaCount--;
             plate[newX][newY].setBacteriaCount(plate[newX][newY].getBacteriaCount() + 1);

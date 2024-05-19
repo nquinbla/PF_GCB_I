@@ -10,6 +10,17 @@ public class ApplicationWindow extends JFrame {
     private int day;
 
     public ApplicationWindow() {
+        // Initialize the cells array
+        this.cells = new Cell[20][20];
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                this.cells[i][j] = new Cell(0, 0, 30); // Initialize each cell
+            }
+        }
+
+        // Initialize the day
+        this.day = 0;
+
         setTitle("Results for Day " + day);
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -43,5 +54,16 @@ public class ApplicationWindow extends JFrame {
         }
 
         add(mainPanel);
+    }
+
+    // Method to simulate the passage of one day
+    public void simulateDay() {
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                cells[i][j].simulateDay(cells, i, j, 10, day); // Simulate one day for each cell
+            }
+        }
+        day++; // Increase the day
+        createComponents(); // Update the GUI
     }
 }

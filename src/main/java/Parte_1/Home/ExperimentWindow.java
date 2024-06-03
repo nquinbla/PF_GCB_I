@@ -114,8 +114,7 @@ public class ExperimentWindow extends JFrame {
                 // Mostrar la cuadrícula de celdas
                 gridPanel.setVisible(true);
                 // Iniciar el desarrollo de la población
-                // Aquí necesitarías alguna forma de iniciar el desarrollo de la población
-                // Esto dependerá de cómo estés representando el desarrollo de la población en tu código
+
                 selectedPopulation.startDevelopment();
 
                 // Actualizar la cuadrícula de celdas

@@ -17,12 +17,30 @@ public class ExperimentWindow extends JFrame {
     private JComboBox<String> populationBox;
     private Map<String, BacteriaPopulation> bacteriaPopulations;
 
+    private JPanel gridPanel;
+    private JButton[][] gridButtons;
+
     public ExperimentWindow(Map<String, BacteriaPopulation> bacteriaPopulations) {
         this.bacteriaPopulations = bacteriaPopulations;
         this.populationBox = new JComboBox<>(new Vector<>(bacteriaPopulations.keySet()));
 
         setTitle("Gestor de Experimentos: Experimento");
         setSize(800, 400);
+
+        // Crear la cuadrícula de celdas
+        gridPanel = new JPanel(new GridLayout(10, 10)); // Ajusta el tamaño de la cuadrícula según sea necesario
+        gridPanel.setPreferredSize(new Dimension(400, 400)); // Ajusta el tamaño según sea necesario
+        gridButtons = new JButton[10][10]; // Ajusta el tamaño según sea necesario
+        for (int i = 0; i < 10; i++) { // Ajusta el tamaño según sea necesario
+            for (int j = 0; j < 10; j++) { // Ajusta el tamaño según sea necesario
+                JButton button = new JButton();
+                button.setBackground(Color.WHITE); // El color inicial de las celdas
+                gridPanel.add(button);
+                gridButtons[i][j] = button;
+            }
+        }
+        add(gridPanel, BorderLayout.CENTER);
+
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
@@ -90,7 +108,19 @@ public class ExperimentWindow extends JFrame {
 
         JButton createExperimentButton = new JButton("Crear Experimento");
         createExperimentButton.addActionListener(e -> {
-            new SelectPopulationWindow(bacteriaPopulations).setVisible(true);
+            String selectedPopulationName = (String) populationBox.getSelectedItem();
+            BacteriaPopulation selectedPopulation = bacteriaPopulations.get(selectedPopulationName);
+            if (selectedPopulation != null) {
+                // Mostrar la cuadrícula de celdas
+                gridPanel.setVisible(true);
+                // Iniciar el desarrollo de la población
+                // Aquí necesitarías alguna forma de iniciar el desarrollo de la población
+                // Esto dependerá de cómo estés representando el desarrollo de la población en tu código
+                selectedPopulation.startDevelopment();
+
+                // Actualizar la cuadrícula de celdas
+                updateGrid(selectedPopulation);
+            }
         });
 
         // Botón de icono
@@ -129,6 +159,22 @@ public class ExperimentWindow extends JFrame {
 
         // Añadir el JLabel de fondo al JFrame
         add(background);
+
+        public void updateGrid(BacteriaPopulation population){
+            for (int i = 0; i < 10; i++) { // Ajusta el tamaño según sea necesario
+                for (int j = 0; j < 10; j++) { // Ajusta el tamaño según sea necesario
+                    // Aquí necesitarías alguna forma de obtener el estado de la celda en la posición (i, j)
+                    // de la población bacteriana. Esto dependerá de cómo estés representando las celdas
+                    // en la población bacteriana.
+                    boolean cellHasBacteria = population.getCell(i, j).hasBacteria();
+                    if (cellHasBacteria) {
+                        gridButtons[i][j].setBackground(Color.GREEN); // El color de las celdas con bacterias
+                    } else {
+                        gridButtons[i][j].setBackground(Color.WHITE); // El color de las celdas sin bacterias
+                    }
+                }
+            }
+        }
     }
 
     // Método main para probar la ventana

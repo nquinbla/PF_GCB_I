@@ -3,6 +3,7 @@ package Parte_1.Home;
 import Parte_1.GestorCultivos.BacteriaPopulation;
 import Parte_1.GestorCultivos.FoodDose;
 import Parte_1.GestorCultivos.PopulationManager;
+import Parte_2.BacteriaPopulationManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -95,6 +96,12 @@ public class PopulationWindow extends JFrame {
             JComboBox<String> foodDosePatternBox = new JComboBox<>(new String[]{"Patrón actual", "Cantidad constante", "Incremento lineal", "Alternancia diaria"});
             JButton foodDoseButton = new JButton("Configurar Dosis de Alimento");
             FoodDose[] foodDose = new FoodDose[1];
+
+
+            String name = "bacteriaName";
+            // Utiliza BacteriaPopulationManager para almacenar la nueva población
+            BacteriaPopulation newPopulation = new BacteriaPopulation();
+            BacteriaPopulationManager.getInstance().getBacteriaPopulations().put(name, newPopulation);
 
             foodDoseButton.addActionListener(e1 -> {
                 String selectedPattern = (String) foodDosePatternBox.getSelectedItem();

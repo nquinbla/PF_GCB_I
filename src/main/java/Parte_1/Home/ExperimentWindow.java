@@ -1,6 +1,7 @@
 package Parte_1.Home;
 
 import Parte_1.GestorCultivos.BacteriaPopulation;
+import Parte_2.BacteriaPopulationManager;
 import Parte_2.MontecarloSimulación;
 import Parte_1.GestorCultivos.ExperimentLoader;
 import Parte_2.SimulationWindow;
@@ -33,6 +34,7 @@ public class ExperimentWindow extends JFrame {
     public ExperimentWindow(Map<String, BacteriaPopulation> bacteriaPopulations) {
         this.bacteriaPopulations = bacteriaPopulations;
         this.populationBox = new JComboBox<>(new Vector<>(bacteriaPopulations.keySet()));
+        this.bacteriaPopulations = BacteriaPopulationManager.getInstance().getBacteriaPopulations();
         simulation = new MontecarloSimulación();
 
         setTitle("Gestor de Experimentos: Experimento");

@@ -5,7 +5,7 @@ import Parte_2.GestorCeldas.Cell;
 import java.util.Date;
 
 public class BacteriaPopulation {
-    private String name;
+    private String nombre;
     private Date startDate;
     private Date endDate;
     private Cell[][] plate;
@@ -24,11 +24,11 @@ public class BacteriaPopulation {
 
     // getters and setters
     public String getName() {
-        return name;
+        return nombre;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.nombre = name;
     }
 
     public Date getStartDate() {

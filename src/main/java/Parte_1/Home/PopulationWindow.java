@@ -15,9 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PopulationWindow extends JFrame {
-
-    // Mapa para almacenar las poblaciones de bacterias
     private Map<String, BacteriaPopulation> bacteriaPopulations = new HashMap<>();
+    private JTextField txtNombre;
+    private JButton savePopulationButton;
+
 
     public PopulationWindow() {
         setTitle("Gestor de Experimentos: Población Bacteriana");

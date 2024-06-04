@@ -1,10 +1,16 @@
 package Parte_1.Home;
 
 import Parte_1.GestorCultivos.BacteriaPopulation;
+import Parte_2.MontecarloSimulación;
+import Parte_1.GestorCultivos.ExperimentLoader;
+import Parte_2.SimulationWindow;
+
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -14,15 +20,20 @@ import java.util.Map;
 import java.util.Vector;
 
 public class ExperimentWindow extends JFrame {
+    private JComboBox<String> experimentComboBox;
     private JComboBox<String> populationBox;
     private Map<String, BacteriaPopulation> bacteriaPopulations;
+    private MontecarloSimulación simulation;
 
     private JPanel gridPanel;
     private JButton[][] gridButtons;
+    private JTextField txtNombre;
+
 
     public ExperimentWindow(Map<String, BacteriaPopulation> bacteriaPopulations) {
         this.bacteriaPopulations = bacteriaPopulations;
         this.populationBox = new JComboBox<>(new Vector<>(bacteriaPopulations.keySet()));
+        simulation = new MontecarloSimulación();
 
         setTitle("Gestor de Experimentos: Experimento");
         setSize(800, 400);
@@ -106,19 +117,28 @@ public class ExperimentWindow extends JFrame {
             }
         });
 
+        // seleccion componentes
+        JLabel selectExperimentLabel = new JLabel("Seleccionar Población:");
+        selectExperimentLabel.setBounds(10, 280, 150, 20);
+        add(selectExperimentLabel);
+
+        experimentComboBox = new JComboBox<>();
+        experimentComboBox.setBounds(160, 280, 160, 20);
+        add(experimentComboBox);
+
         JButton createExperimentButton = new JButton("Crear Experimento");
-        createExperimentButton.addActionListener(e -> {
-            String selectedPopulationName = (String) populationBox.getSelectedItem();
-            BacteriaPopulation selectedPopulation = bacteriaPopulations.get(selectedPopulationName);
-            if (selectedPopulation != null) {
-                // Mostrar la cuadrícula de celdas
-                gridPanel.setVisible(true);
-                // Iniciar el desarrollo de la población
-
-                selectedPopulation.startDevelopment();
-
-                // Actualizar la cuadrícula de celdas
-                updateGrid(selectedPopulation);
+        createExperimentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedExperiment = (String) experimentComboBox.getSelectedItem();
+                if (selectedExperiment != null) {
+                    simulation = new MontecarloSimulación();
+                    simulation.simulateDay();
+                    SimulationWindow simulationWindow = new SimulationWindow(simulation);
+                    simulationWindow.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccione una población válida.");
+                }
             }
         });
 
@@ -158,22 +178,6 @@ public class ExperimentWindow extends JFrame {
 
         // Añadir el JLabel de fondo al JFrame
         add(background);
-
-        public void updateGrid(BacteriaPopulation population){
-            for (int i = 0; i < 10; i++) { // Ajusta el tamaño según sea necesario
-                for (int j = 0; j < 10; j++) { // Ajusta el tamaño según sea necesario
-                    // Aquí necesitarías alguna forma de obtener el estado de la celda en la posición (i, j)
-                    // de la población bacteriana. Esto dependerá de cómo estés representando las celdas
-                    // en la población bacteriana.
-                    boolean cellHasBacteria = population.getCell(i, j).hasBacteria();
-                    if (cellHasBacteria) {
-                        gridButtons[i][j].setBackground(Color.GREEN); // El color de las celdas con bacterias
-                    } else {
-                        gridButtons[i][j].setBackground(Color.WHITE); // El color de las celdas sin bacterias
-                    }
-                }
-            }
-        }
     }
 
     // Método main para probar la ventana
